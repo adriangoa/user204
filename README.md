@@ -1,8 +1,11 @@
 user204
 =======
-Repositorio para albergar el proyecto de programacion web
+<h3>Repositorio para albergar el proyecto de programacion web</h3>
 =======
 <h4>Los accesos son los siguientes:</h4>
+<p>
+	Cada titulo es un link al servidor,<a href="http://alanturing.cucei.udg.mx/cc409/user204/204/">http://alanturing.cucei.udg.mx/cc409/user204/204/</a>
+</p>
 
 <a href="http://alanturing.cucei.udg.mx/cc409/user204/204/">Login</a>:<br>
 <pre>
