@@ -1,8 +1,8 @@
 user204
 =======
-Repositorio para albergar el proyecto de la materia de programacion web
+Repositorio para albergar el proyecto de programacion web
 =======
-<h1>Los accesos son los siguientes:</h1>
+<h4>Los accesos son los siguientes:</h4>
 
 <a href="http://alanturing.cucei.udg.mx/cc409/user204/204/">Login</a>:<br>
 <pre>
@@ -11,8 +11,10 @@ Repositorio para albergar el proyecto de la materia de programacion web
 </pre>
 
 <a href="http://alanturing.cucei.udg.mx/cc409/user204/204/Administrador">Administrador</a>:<br>
+<pre>
 --------------
 204/Administrador/agregarCiclo.html<br>
+</pre>
 
 <a href="http://alanturing.cucei.udg.mx/cc409/user204/204/Profesor">Profesor</a>:<br>
 <pre>
