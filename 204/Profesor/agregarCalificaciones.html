@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Sistema de calificaciones en linea</title>
+	<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+	<header>
+		<div>
+			<p class="sombra_leve">Sistema de calificaciones en linea</p>
+			<img id="logo" src="../img/logo.png" alt="Estudiantes">
+		</div>
+	</header>
+	<nav id="menu_profesor">
+		<ul>
+			<li><a href="agregarCurso.html"> Agregar Cursos</a></li>
+			<li><a href="configurarCurso.html"> Configurar Cursos</a></li>
+			<li><a href="agregarAlumno.html"> Agregar Alumnos</a></li>
+			<li><a href="altaAlumnos.html"> Alta de Alumnos</a></li>
+			<li><a href="agregarCalificaciones.html"> Calificaciones</a></li>
+			<li><a href="agregarAsistencias.html"> Asistencias</a></li>
+		</ul>
+	</nav>
+	<section>
+		<div class="buscador">
+		<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
+			<label for="buscar">Buscar Curso</label>
+			<input type="search" id="buscar" name="buscar" />
+		</div>
+		<div class="contenedor">
+			<div id="cuadro_formulario-ancho">
+				<form action="#" method="GET">
+					<div id="campos_entrada">
+						<table>
+							<caption>Curso de Ejemplo 1</caption>
+							<thead>
+								<tr>
+									<th>
+										Codigo
+									</th>
+									<th>
+										Nombre
+									</th>
+									<!--colspan segun si hay hoja extra de evaluacion-->
+									<th colspan="3">
+										Tareas
+									</th>
+									<th colspan="2">
+										Proyecto final
+									</th>
+									<th colspan="2">
+										Examen departamental
+									</th>
+									<th>
+										SD
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+									<td>
+										210832376
+									</td>
+									<td>
+										Orosco Eguia Jose cristobal
+									</td>
+									<!--segun la hoja extra de evalucion se generaria dinamicamente-->
+									<td>
+										<input type="number" min="0" max="10">
+									</td>
+									<td>
+										<input type="number" min="0" max="10">
+									</td>
+									<td>
+										<input type="number" min="0" max="10">
+									</td>
+									<td>
+										<input type="number" min="0" max="10">
+									</td>
+									<td>
+										<input type="checkbox" title="NP">
+									</td>
+									<td>
+										<input type="number" min="0" max="10">
+									</td>
+									<td>
+										<input type="checkbox" title="NP">
+									</td>
+									
+									<td>
+										<input type="checkbox" title="SD">
+									</td>
+							</tbody>
+						</table>
+					</div>
+					<div id="botones_formulario">
+						<input type="submit" value="Guardar" class="boton">
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usario-</p>
+	</footer>
+	
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Sistema de calificaciones en linea</title>
+	<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+	<header>
+		<div>
+			<p class="sombra_leve">Sistema de calificaciones en linea</p>
+			<img id="logo" src="../img/logo.png" alt="Estudiantes">
+		</div>
+	</header>
+	<nav id="menu_profesor">
+		<ul>
+			<li><a href="agregarCurso.html"> Agregar Cursos</a></li>
+			<li><a href="configurarCurso.html"> Configurar Cursos</a></li>
+			<li><a href="agregarAlumno.html"> Agregar Alumnos</a></li>
+			<li><a href="altaAlumnos.html"> Alta de Alumnos</a></li>
+			<li><a href="agregarCalificaciones.html"> Calificaciones</a></li>
+			<li><a href="agregarAsistencias.html"> Asistencias</a></li>
+		</ul>
+	</nav>
+	<section>
+		<div class="contenedor">
+			<div id="cuadro_formulario">
+				<form action="#" method="GET">
+					<div id="campos_entrada">
+						<label for="codigo">Codigo</label>
+						<input type="text" id="codigo" name="codigo" required="required"><br>
+						<label for="nombre">Nombre</label>
+						<input type="text" id="nombre" name="nombre" placeholder="Nombre">
+						<input type="text" id="apellidos" name="apellido" placeholder="Apellidos"><br>
+						<label for="carrera">Carrera</label>
+						<input type="text" id="carrera" name="carrera"><br>
+						<label for="correo">Correo</label>
+						<input type="email" id="correo" name="correo"><br>
+						<label for="celular">Celular</label>
+						<input type="checkbox" name="opcional-celular" title="Opcional">
+						<input type="tel" id="celular" name="celular"><br>
+						<label for="github">github</label>
+						<input type="checkbox" name="opcional-github" title="Opcional">
+						<input type="url" id="github" name="github"><br>
+						<label for="web">Pagina web</label>
+						<input type="checkbox" name="opcional-web" title="Opcional">
+						<input type="url" id="web" name="web"><br>
+					</div>
+					<div id="botones_formulario">
+						<input type="submit" value="Agregar" class="boton">
+						<input type="reset" value="Limpiar" class="boton">
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usario-</p>
+	</footer>
+	
+</body>
+</html>
