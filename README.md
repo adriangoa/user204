@@ -1,6 +1,11 @@
 user204
 =======
 <h3>Repositorio para albergar el proyecto de programacion web</h3>
+<p>
+Jose Cristobal Orozco Eguia
+Pedro Antonio Valadez Vera
+Adrian Vazquez Esparza
+</p>
 =======
 <h4>Los accesos son los siguientes:</h4>
 <p>
