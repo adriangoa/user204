@@ -2,96 +2,149 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sistema de calificaciones en linea</title>
 	<link rel="stylesheet" href="../css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css">
 </head>
 <body>
-	<header>
-		<div>
-			<p class="sombra_leve">Sistema de calificaciones en linea</p>
-			<img id="logo" src="../img/logo.png" alt="Estudiantes">
-		</div>
-	</header>
-	<nav id="menu_profesor">
-		<ul>
-			<li><a href="agregarCurso.html"> Agregar Cursos</a></li>
-			<li><a href="configurarCurso.html"> Configurar Cursos</a></li>
-			<li><a href="agregarAlumno.html"> Agregar Alumnos</a></li>
-			<li><a href="altaAlumnos.html"> Alta de Alumnos</a></li>
-			<li><a href="agregarCalificaciones.html"> Calificaciones</a></li>
-			<li><a href="agregarAsistencias.html"> Asistencias</a></li>
-		</ul>
-	</nav>
-	<section>
-		<div class="contenedor">
-			<div id="cuadro_formulario">
-				<form action="#" method="GET">
-					<div id="campos_entrada">
-						<label for="ciclo">Ciclo escolar:</label>
-						<select name="ciclo">
-							<option>2012A</option>
-							<option>2012B</option>
-							<option>2013A</option>
-							<option>2013B</option>
-							<option>2014A</option>
-						</select><br>
-						<label for="nombre-curso">Nombre de Curso:</label>
-						<input type="text" name="nombre-curso" required="required"><br>
-						<label for="seccion">Seccion:</label>
-						<input type="text" name="seccion" required="required"><br>
-						<label for="nrc">NRC:</label>
-						<input type="text" name="nrc" required="required"><br>
-						<label for="academia">Academia:</label>
-						<select name="academia">
-							<option>Division de ciencias basicas</option>
-							<option>Division de ingenierias</option>
-							<option>Division de electronica y computacion</option>
-						</select><br>
-
-						<label for="lunes">Lunes</label>
-						<input type="checkbox" name="dias">
-						<input type="number"  min="1" max="12" id="lunes" name="lunes">
-						<input type="text" placeholder="horarios"><br>
-
-						<label for="martes">Martes</label>
-						<input type="checkbox" name="dias">
-						<input type="number" min="1" max="12" id="martes" name="martes">
-						<input type="text" placeholder="horarios"><br>
-
-						<label for="miercoles">Miercoles</label>
-						<input type="checkbox" name="dias">
-						<input type="number" min="1" max="12" id="miercoles" name="miercoles">
-						<input type="text" placeholder="horarios"><br>
-
-						<label for="jueves">Jueves</label>
-						<input type="checkbox" name="dias">
-						<input type="number" min="1" max="12" id="jueves" name="jueves">
-						<input type="text" placeholder="horarios"><br>
-
-						<label for="viernes">Viernes</label>
-						<input type="checkbox" name="dias">
-						<input type="number" min="1" max="12" id="viernes" name="viernes">
-						<input type="text" placeholder="horarios"><br>
-
-						<label for="sabado">Sabado</label>
-						<input type="checkbox" name="dias">
-						<input type="number" min="1" max="12" id="sabado" name="sabado">
-						<input type="text" placeholder="horarios"><br>
-						
-						
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<header>
+					<div>
+						<p class="sombra_leve">Sistema de calificaciones en linea</p>
+						<img src="../img/logo.svg" id="logo"></img>
 					</div>
-					<div id="botones_formulario">
-						<button type="submit" class="boton">Agregar</button>
-						<button type="reset" class="boton">Limpiar</button>
-						<a href="clonarCurso.html"><button type="button" class="boton">Clonar</button></a>
+				</header>
+				<div class="navbar">
+								<div class="navbar-inner">
+									<div class="container" style="width: auto;">
+										<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</a>
+										<a class="brand" href="#">Califix</a>
+										<div class="nav-collapse">
+											<ul class="nav">
+												<li class="active"><a href="index.html">Inicio</a></li>
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <b class="caret"></b></a>
+													<ul class="dropdown-menu">
+														<li class="nav-header">
+															Cursos
+														</li>
+														<li><a href="agregarCurso.html">Agregar</a></li>
+														<li><a href="configurarCurso.html">Configuar</a></li>
+														<li class="divider"></li>
+														<li class="nav-header">
+															Calificaciones y asistencias
+														</li>
+														<li><a href="agregarCalificaciones.html">Agregar calificaciones</a></li>
+														<li><a href="agregarAsistencias.html">Nombrar Asistencia</a></li>
+													</ul>
+												</li>
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alumnos <b class="caret"></b></a>
+													<ul class="dropdown-menu">
+														<li class="nav-header">
+															Registro y alta
+														</li>
+														<li><a href="agregarAlumno.html">Registrar nuevo alumno</a></li>
+														<li><a href="agregarAsistencias.html">Dar de alta a curso</a></li>
+													</ul>
+												</li>
+											</ul>
+											<ul class="nav pull-right">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-user"></i> Michelle Torres <b class="caret"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Ver perfil</a></li>
+														<li><a href="#">Cerrar sesion</a></li>
+													</ul>
+												</li>
+											</ul>
+										</div><!-- /.nav-collapse -->
+									</div>
+								</div><!-- /navbar-inner -->
+							</div>
+				<section>
+					<div class="contenedor">
+						<div id="cuadro_formulario">
+							<form action="#" method="GET">
+								<div id="campos_entrada">
+									<label for="ciclo">Ciclo escolar:</label>
+									<select name="ciclo">
+										<option>2012A</option>
+										<option>2012B</option>
+										<option>2013A</option>
+										<option>2013B</option>
+										<option>2014A</option>
+									</select><br>
+									<label for="nombre-curso">Nombre de Curso:</label>
+									<input type="text" name="nombre-curso" required="required"><br>
+									<label for="seccion">Seccion:</label>
+									<input type="text" name="seccion" required="required"><br>
+									<label for="nrc">NRC:</label>
+									<input type="text" name="nrc" required="required"><br>
+									<label for="academia">Academia:</label>
+									<select name="academia">
+										<option>Division de ciencias basicas</option>
+										<option>Division de ingenierias</option>
+										<option>Division de electronica y computacion</option>
+									</select><br>
+
+									<label for="lunes">Lunes</label>
+									<input type="checkbox" name="dias">
+									<input type="number"  min="1" max="12" id="lunes" name="lunes">
+									<input type="text" placeholder="horarios"><br>
+
+									<label for="martes">Martes</label>
+									<input type="checkbox" name="dias">
+									<input type="number" min="1" max="12" id="martes" name="martes">
+									<input type="text" placeholder="horarios"><br>
+
+									<label for="miercoles">Miercoles</label>
+									<input type="checkbox" name="dias">
+									<input type="number" min="1" max="12" id="miercoles" name="miercoles">
+									<input type="text" placeholder="horarios"><br>
+
+									<label for="jueves">Jueves</label>
+									<input type="checkbox" name="dias">
+									<input type="number" min="1" max="12" id="jueves" name="jueves">
+									<input type="text" placeholder="horarios"><br>
+
+									<label for="viernes">Viernes</label>
+									<input type="checkbox" name="dias">
+									<input type="number" min="1" max="12" id="viernes" name="viernes">
+									<input type="text" placeholder="horarios"><br>
+
+									<label for="sabado">Sabado</label>
+									<input type="checkbox" name="dias">
+									<input type="number" min="1" max="12" id="sabado" name="sabado">
+									<input type="text" placeholder="horarios"><br>
+									
+									
+								</div>
+								<div id="botones_formulario">
+									<button type="submit" class="boton">Agregar</button>
+									<button type="reset" class="boton">Limpiar</button>
+									<a href="clonarCurso.html"><button type="button" class="boton">Clonar</button></a>
+								</div>
+							</form>
+						</div>
 					</div>
-				</form>
+				</section>
+				<footer>
+					<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
+				</footer>
 			</div>
-		</div>
-	</section>
-	<footer>
-		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usario-</p>
-	</footer>
-	
+	    </div>
+	</div>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-collapse.js"></script>
 </body>
 </html>
