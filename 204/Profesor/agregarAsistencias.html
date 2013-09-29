@@ -53,7 +53,7 @@
 												Registro y alta
 											</li>
 											<li><a href="agregarAlumno.html">Registrar nuevo alumno</a></li>
-											<li><a href="agregarAsistencias.html">Dar de alta a curso</a></li>
+											<li><a href="altaAlumnos.html">Dar de alta a curso</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -74,8 +74,8 @@
 		<div class="contenedor">
 			<div id="cuadro_formulario-ancho">
 				<form action="#" method="GET">
-					<div id="campos_entrada">
-						<table>
+					<div id="campos_entrada" class="table-responsive">
+						<table class="table">
 							<caption>Curso de ejemplo 1</caption>
 							<thead>
 								<tr>
@@ -102,27 +102,23 @@
 										Valadez Vera Pedro Antonio
 									</td>
 									<td>
-										<input type="radio" name="asitencia1" value="presente" title="Presente" checked>
-										<input type="radio" name="asitencia1" value="falta" title="Falta">
+										<input type="checkbox" name="asistencia[]" value="fecha">
 									</td>
 									<td>
-										<input type="radio" name="asitencia2" value="presente" title="Presente" checked>
-										<input type="radio" name="asitencia2" value="falta" title="Falta">
+										<input type="checkbox" name="asistencia[]" value="fecha">
 									</td>
 									<td>
-										<input type="radio" name="asitencia3" value="presente" title="Presente" checked>
-										<input type="radio" name="asitencia3" value="falta" title="Falta">
+										<input type="checkbox" name="asistencia[]" value="fecha">
 									</td>
 									<td>
-										<input type="text">
+										<p id="">15%</p>
 									</td>
 								</tr>
 							</tbody>
 							<tfoot>
 								<tr>
 									<td colspan="5">
-										<label for="porcentaje-grupal">Porcentaje grupal</label>
-										<input type="text" id="porcentaje-grupal" name="porcentaje-grupal">
+										<p id="">Porcentaje grupal:15%</p>
 									</td>
 								</tr>
 							</tfoot>

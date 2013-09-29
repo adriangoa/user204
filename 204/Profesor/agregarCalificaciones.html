@@ -53,7 +53,7 @@
 												Registro y alta
 											</li>
 											<li><a href="agregarAlumno.html">Registrar nuevo alumno</a></li>
-											<li><a href="agregarAsistencias.html">Dar de alta a curso</a></li>
+											<li><a href="altaAlumnos.html">Dar de alta a curso</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -73,14 +73,14 @@
 	<section>
 		<div class="buscador">
 		<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
-			<label for="buscar">Buscar Curso</label>
+			<label for="buscar"><i class="icon-search"></i>Buscar Curso</label>
 			<input type="search" id="buscar" name="buscar" />
 		</div>
 		<div class="contenedor">
 			<div id="cuadro_formulario-ancho">
 				<form action="#" method="GET">
-					<div id="campos_entrada">
-						<table>
+					<div id="campos_entrada" class="table-responsive">
+						<table id="tabla-calificaciones" class="table">
 							<caption>Curso de Ejemplo 1</caption>
 							<thead>
 								<tr>

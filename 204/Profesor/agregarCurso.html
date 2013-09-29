@@ -29,7 +29,7 @@
 										<a class="brand" href="#">Califix</a>
 										<div class="nav-collapse">
 											<ul class="nav">
-												<li class="active"><a href="index.html">Inicio</a></li>
+												<li ><a href="index.html">Inicio</a></li>
 												<li class="dropdown">
 													<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <b class="caret"></b></a>
 													<ul class="dropdown-menu">
@@ -53,7 +53,7 @@
 															Registro y alta
 														</li>
 														<li><a href="agregarAlumno.html">Registrar nuevo alumno</a></li>
-														<li><a href="agregarAsistencias.html">Dar de alta a curso</a></li>
+														<li><a href="altaAlumnos.html">Dar de alta a curso</a></li>
 													</ul>
 												</li>
 											</ul>
@@ -73,66 +73,411 @@
 				<section>
 					<div class="contenedor">
 						<div id="cuadro_formulario">
-							<form action="#" method="GET">
+							<form action="#" method="get" id="formfilters" class="form-horizontal">
+
 								<div id="campos_entrada">
-									<label for="ciclo">Ciclo escolar:</label>
-									<select name="ciclo">
-										<option>2012A</option>
-										<option>2012B</option>
-										<option>2013A</option>
-										<option>2013B</option>
-										<option>2014A</option>
-									</select><br>
-									<label for="nombre-curso">Nombre de Curso:</label>
-									<input type="text" name="nombre-curso" required="required"><br>
-									<label for="seccion">Seccion:</label>
-									<input type="text" name="seccion" required="required"><br>
-									<label for="nrc">NRC:</label>
-									<input type="text" name="nrc" required="required"><br>
-									<label for="academia">Academia:</label>
-									<select name="academia">
-										<option>Division de ciencias basicas</option>
-										<option>Division de ingenierias</option>
-										<option>Division de electronica y computacion</option>
-									</select><br>
+									
+								    <label for="ciclo_escolar">Ciclo escolar</label>
+								    <select id="ciclo_escolar" name="ciclo_escolar"  > 
+								      <option value=""></option>
+								      <option value="2012A">2012A</option>
+								      <option value="2012B">2012B</option>
+								      <option value="2013A">2013A</option>
+								    </select><br>
 
-									<label for="lunes">Lunes</label>
-									<input type="checkbox" name="dias">
-									<input type="number"  min="1" max="12" id="lunes" name="lunes">
-									<input type="text" placeholder="horarios"><br>
+								    <label for="nombre_curso">Nombre del curso</label>
+								    <input type="text" id="nombre_curso" name="nombre_curso"><br>
 
-									<label for="martes">Martes</label>
-									<input type="checkbox" name="dias">
-									<input type="number" min="1" max="12" id="martes" name="martes">
-									<input type="text" placeholder="horarios"><br>
+								    <label for="seccion">Seccion</label>
+								    <input type="text" id="seccion" name="seccion"><br>
 
-									<label for="miercoles">Miercoles</label>
-									<input type="checkbox" name="dias">
-									<input type="number" min="1" max="12" id="miercoles" name="miercoles">
-									<input type="text" placeholder="horarios"><br>
+								    <label for="nrc">NRC</label>
+								    <input type="text" id="nrc" name="nrc"><br>
 
-									<label for="jueves">Jueves</label>
-									<input type="checkbox" name="dias">
-									<input type="number" min="1" max="12" id="jueves" name="jueves">
-									<input type="text" placeholder="horarios"><br>
+								    <label for="Academia">Academia</label>
+								    <select id="Academia" name="Academia"  > 
+								      <option value=""></option>
+								      <option value="2012A">Division de ciencias basicas</option>
+								      <option value="2012B">Division de ingenierias</option>
+								      <option value="2013A">Division de electronica y computacion</option>
+								    </select><br>
 
-									<label for="viernes">Viernes</label>
-									<input type="checkbox" name="dias">
-									<input type="number" min="1" max="12" id="viernes" name="viernes">
-									<input type="text" placeholder="horarios"><br>
 
-									<label for="sabado">Sabado</label>
-									<input type="checkbox" name="dias">
-									<input type="number" min="1" max="12" id="sabado" name="sabado">
-									<input type="text" placeholder="horarios"><br>
+
+
+									<div id="tabla-horarios" class="table-responsive">
+										<table class="table">
+											<caption>Horario</caption>
+												<thead>
+													<tr>
+														<th>Horas</th>
+														<th>Lunes</th>
+														<th>Martes</th>
+														<th>miercoles</th>
+														<th>Jueves</th>
+														<th>Viernes</th>
+														<th>Sabado</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															7:00 - 8:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-7a8">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-7a8">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-7a8">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-7a8">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-7a8">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-7a8">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															8:00 - 9:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-8a9">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-8a9">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-8a9">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-8a9">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-8a9">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-8a9">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															9:00 - 10:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-9a10">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-9a10">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-9a10">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-9a10">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-9a10">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-9a10">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															10:00 - 11:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-10a11">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-10a11">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-10a11">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-10a11">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-10a11">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-10a11">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															11:00 - 12:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-11a12">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-11a12">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-11a12">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-11a12">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-11a12">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-11a12">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															12:00 - 13:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-12a13">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-12a13">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-12a13">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-12a13">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-12a13">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-12a13">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															13:00 - 14:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-13a14">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-13a14">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-13a14">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-13a14">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-13a14">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-13a14">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															14:00 - 15:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-14a15">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-14a15">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-14a15">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-14a15">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-14a15">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-14a15">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															15:00 - 16:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-15a16">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-15a16">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-15a16">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-15a16">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-15a16">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-15a16">
+														</td>
+													</tr>
+													<tr>
+														<td>
+														16:00 - 17:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-16a17">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-16a17">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-16a17">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-16a17">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-16a17">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-16a17">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															17:00 - 18:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-17a18">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-17a18">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-17a18">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-17a18">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-17a18">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-17a18">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															18:00 -19:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-18a19">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-18a19">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-18a19">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-18a19">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-18a19">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-18a19">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															19:00 - 20:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-19a20">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-19a20">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-19a20">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-19a20">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-19a20">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-19a20">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															20:00 - 21:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-20a21">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-20a21">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-20a21">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-20a21">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-20a21">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-20a21">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															21:00 - 22:00
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="lunes-21a22">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="martes-21a22">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="miercoles-21a22">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="jueves-21a22">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="viernes-21a22">
+														</td>
+														<td>
+															<input type="checkbox" name="horarios[]" value="sabado-21a22">
+														</td>
+													</tr>
+												</tbody>
+										</table>
+									</div>
 									
 									
 								</div>
 								<div id="botones_formulario">
-									<button type="submit" class="boton">Agregar</button>
+									
 									<button type="reset" class="boton">Limpiar</button>
 									<a href="clonarCurso.html"><button type="button" class="boton">Clonar</button></a>
+									<button type="submit" class="boton">Agregar</button>
 								</div>
+
 							</form>
 						</div>
 					</div>
