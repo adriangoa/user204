@@ -268,16 +268,6 @@ div.buscador input:focus{
 	vertical-align: middle;
 }
 
-.error{
-	border: 1px solid;  
-    margin: 10px 0px;
-    padding:5px 5px 5px 30px;  
-	color: #D8000C;
-    background:#FFBABA url(../img/error.png) top left no-repeat;
-    background-position: 5px 5px;
-    display: inline;
-}
-
 
 
 /*ID'S*/
