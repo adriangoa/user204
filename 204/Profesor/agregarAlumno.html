@@ -73,25 +73,25 @@
 	<section>
 		<div class="contenedor">
 			<div id="cuadro_formulario">
-				<form action="#" method="GET">
+				<form action="#" method="get">
 					<div id="campos_entrada">
 						<label for="codigo">Codigo</label>
-						<input type="text" id="codigo" name="codigo" ><br>
+						<input type="text" id="codigo" name="codigo" maxlength="10"><br>
 						<label for="nombre">Nombre</label>
 						<input type="text" id="nombre" name="nombre" placeholder="Nombre">
-						<input type="text" id="apellidos" name="apellido" placeholder="Apellidos"><br>
+						<input type="text" id="apellidos" name="apellidos" placeholder="Apellidos"><br>
 						<label for="carrera">Carrera</label>
 						<input type="text" id="carrera" name="carrera"><br>
 						<label for="correo">Correo</label>
 						<input type="email" id="correo" name="correo"><br>
 						<label for="celular">Celular</label>
-						<input type="checkbox" name="opcional-celular" title="Opcional">
-						<input type="tel" id="celular" name="celular"><br>
+						<input type="checkbox" name="opcional-celular" id="opcional-celular" title="Opcional">
+						<input type="tel" id="celular" name="celular" maxlength="10"><br>
 						<label for="github">github</label>
-						<input type="checkbox" name="opcional-github" title="Opcional">
+						<input type="checkbox" name="opcional-github" id="opcional-github" title="Opciona2">
 						<input type="url" id="github" name="github"><br>
 						<label for="web">Pagina web</label>
-						<input type="checkbox" name="opcional-web" title="Opcional">
+						<input type="checkbox" name="opcional-web" id="opcional-web" title="Opciona3">
 						<input type="url" id="web" name="web"><br>
 					</div>
 					<div id="botones_formulario">

@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 	var error= document.createElement("div");
 
-	//valida en cada elemento individualmente
+	//valida en cada elemento individualmente//por el momento solo elimina los mensajes de error
 	
 	$('#ciclo_escolar').focus(function(event) {
 		
@@ -27,9 +27,14 @@ jQuery(document).ready(function($){
 		$(".error").remove();
 	});
 
+
+
 	// valida cuando se da click en el boton de enviar
 	$(".enviar").click(function (e) {
 		e.preventDefault();//para evitar que se envie antes de validar
+		//si ya hay mensajes de error se borran para validar de nuevo
+		$(".error").remove();
+
 		if($("#ciclo_escolar").val()=="")
 		{
 			
@@ -57,12 +62,29 @@ jQuery(document).ready(function($){
 					.addClass("error")
 			    	.clone().insertAfter($("#nrc"))
 		}
+		else
+		{
+			var valor = $("#nrc").val();
+			if(!valor.match(/[0-9]+/))//los nrc solo haceptan numeros
+			{
+				$(error).text("El nrc solo admite numeros")
+					.addClass("error")
+			    	.clone().insertAfter($("#nrc"))
+			}
+		}
 
 		if($("#academia").val()=="")
 		{
 			$(error).text("Ingresa la seccion")
 					.addClass("error")
 			    	.clone().insertAfter($("#academia"))
+		}
+
+		if($("input[name='horarios']:checked").length==0)
+		{
+			$(error).text("Selecciona el horario")
+					.addClass("error")
+			    	.clone().insertBefore($("#tabla-horarios"))
 		}
 	});
 
