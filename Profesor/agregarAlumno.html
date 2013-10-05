@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sistema de calificaciones en linea</title>
+	<link rel="stylesheet" href="../css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+	<header>
+		<div>
+			<p class="sombra_leve">Sistema de calificaciones en linea</p>
+			<img src="../img/logo.svg" id="logo"></img>
+		</div>
+	</header>
+	<div class="navbar">
+					<div class="navbar-inner">
+						<div class="container" style="width: auto;">
+							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+							<a class="brand" href="#">Califix</a>
+							<div class="nav-collapse">
+								<ul class="nav">
+									<li class="active"><a href="index.html">Inicio</a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li class="nav-header">
+												Cursos
+											</li>
+											<li><a href="agregarCurso.html">Agregar</a></li>
+											<li><a href="configurarCurso.html">Configuar</a></li>
+											<li class="divider"></li>
+											<li class="nav-header">
+												Calificaciones y asistencias
+											</li>
+											<li><a href="agregarCalificaciones.html">Agregar calificaciones</a></li>
+											<li><a href="agregarAsistencias.html">Nombrar Asistencia</a></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alumnos <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li class="nav-header">
+												Registro y alta
+											</li>
+											<li><a href="agregarAlumno.html">Registrar nuevo alumno</a></li>
+											<li><a href="altaAlumnos.html">Dar de alta a curso</a></li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="nav pull-right">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-user"></i> Michelle Torres <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Ver perfil</a></li>
+											<li><a href="#">Cerrar sesion</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div><!-- /.nav-collapse -->
+						</div>
+					</div><!-- /navbar-inner -->
+				</div>
+	<section>
+		<div class="contenedor">
+			<div id="cuadro_formulario">
+				<form action="#" method="get">
+					<div id="campos_entrada">
+						<label for="codigo">Codigo</label>
+						<input type="text" id="codigo" name="codigo" maxlength="10"><br>
+						<label for="nombre">Nombre</label>
+						<input type="text" id="nombre" name="nombre" placeholder="Nombre">
+						<input type="text" id="apellidos" name="apellidos" placeholder="Apellidos"><br>
+						<label for="carrera">Carrera</label>
+						<input type="text" id="carrera" name="carrera"><br>
+						<label for="correo">Correo</label>
+						<input type="email" id="correo" name="correo"><br>
+						<label for="celular">Celular</label>
+						<input type="checkbox" name="opcional-celular" id="opcional-celular" title="Opcional">
+						<input type="tel" id="celular" name="celular" maxlength="10"><br>
+						<label for="github">github</label>
+						<input type="checkbox" name="opcional-github" id="opcional-github" title="Opciona2">
+						<input type="url" id="github" name="github"><br>
+						<label for="web">Pagina web</label>
+						<input type="checkbox" name="opcional-web" id="opcional-web" title="Opciona3">
+						<input type="url" id="web" name="web"><br>
+					</div>
+					<div id="botones_formulario">
+						<button type="reset" class="boton">Limpiar</button>
+						<button type="submit" class="boton enviar">Agregar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
+	</footer>
+	</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="js/validaFormProfesor-alumno.js"></script>
+</body>
+</html>

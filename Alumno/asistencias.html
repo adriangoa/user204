@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Sistema de calificaciones en linea</title>
+	<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+	<header>
+		<div>
+			<p class="sombra_leve">Sistema de calificaciones en linea</p>
+			<img id="logo" src="../img/logo.png" alt="Estudiantes">
+		</div>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="calificaciones.html">Ver calificaciones</a></li>
+			<li><a href="">Ver asistencias</a></li>
+		</ul>
+	</nav>
+
+	<section>
+		<div class="buscador">
+		<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
+			<label for="buscar">Buscar Curso</label>
+			<input type="search" id="buscar" name="buscar" />
+		</div>
+		<div class="contenedor">
+			<table>
+							<caption>Curso de ejemplo 1</caption>
+							<thead>
+								<tr>
+									<th>
+										Alumno
+									</th>
+									<th>
+										07/07/2013
+									</th>
+									<th>
+										07/07/2013
+									</th>
+									<th>
+										07/07/2013
+									</th>
+									<th>
+										Porcentaje
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										Valadez Vera Pedro Antonio
+									</td>
+									<td>
+										<input type="checkbox" checked disabled>
+									</td>
+									<td>
+										<input type="checkbox" checked disabled>
+									</td>
+									<td>
+										<input type="checkbox"  disabled>
+									</td>
+									
+									<td>
+										<input type="text">
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="5">
+										<label for="porcentaje-grupal">Porcentaje grupal</label>
+										<input type="text" id="porcentaje-grupal" name="porcentaje-grupal">
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+		</div>
+	</section>
+	<footer>
+		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usario-</p>
+	</footer>
+	
+</body>
+</html>
