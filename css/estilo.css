@@ -384,6 +384,28 @@ div.navbar{
 /*mediaqueries*/
 @media (max-width: 480px){
 
+#cuadro_formulario{
+	width: 100%;
+}
+form #campos_entrada input[type='text'],form #campos_entrada input[type='number']
+,form #campos_entrada input[type='email'],form #campos_entrada input[type='url'],
+form #campos_entrada input[type='tel'],form #campos_entrada input[type='password']{
+	
+	width: 95%;
+}
+
+form #campos_entrada select{
+	width: 95%;
+}
+
+form label{
+	text-align: left;
+	display: block;
+	vertical-align: middle;
+	width: 10em;
+	margin: 0 1em 0 0;
+}
+
 header div p{
 	font-size: 1em;
 	margin: 0%;
