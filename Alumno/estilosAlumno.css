@@ -7,4 +7,25 @@
   nav{
     height: 39px;
   }
+
+  #tabla_asistencias{
+    font-size: 50%;
+  }
+}
+
+@media (max-height: 480px){
+/*
+    nav ul a{
+    font-size: 16px;
+  }
+
+  nav{
+    height: 39px;
+  }
+
+*/
+  #tabla_asistencias{
+    font-size: 80%;
+
+  }
 }
