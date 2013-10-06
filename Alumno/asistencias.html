@@ -5,6 +5,7 @@
 	<title>Sistema de calificaciones en linea</title>
 	<link rel="stylesheet" href="../css/estilo.css">
 	<link rel="stylesheet" href="estilosAlumno.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
 	<header>
@@ -27,7 +28,8 @@
 			<input type="search" id="buscar" name="buscar" />
 		</div>
 		<div class="contenedor">
-			<table id="tabla_asistencias">
+			<div class="table-responsive">
+							<table id="tabla_asistencias" class="table">
 							<caption>Curso de ejemplo 1</caption>
 							<thead>
 								<tr>
@@ -77,10 +79,12 @@
 								</tr>
 							</tfoot>
 						</table>
+			</div>
+
 		</div>
 	</section>
 	<footer>
-		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usuario-</p>
+		<p  id="pie" class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usuario-</p>
 	</footer>
 	
 </body>
