@@ -85,7 +85,7 @@ form label{
 
 form #campos_entrada input[type='text'],form #campos_entrada input[type='number']
 ,form #campos_entrada input[type='email'],form #campos_entrada input[type='url'],
-form #campos_entrada input[type='tel']{
+form #campos_entrada input[type='tel'],form #campos_entrada input[type='password']{
 	
 	display: inline-block;
 	border: 1px solid #ccc;
@@ -140,7 +140,7 @@ footer
 	font-size: 1em;
 }
 /*Inputs  fuera de formularios*/
- input[type='text']{
+ input[type='text'],input[type='password']{
 	padding: .5em .6em;
 	display: inline-block;
 	border: 1px solid #ccc;

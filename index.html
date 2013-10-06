@@ -15,17 +15,17 @@
 	<section>
 		<div class="contenedor">
 			<div id="cuadro_formulario">
-				<form action="#" post="get">
+				<form action="#" post="post">
 					<div id="campos_entrada">
 						<label for="usuario">Usuario:</label>
 						<input type="text" name="Usuario"><br>
 						<label for="password">Contraseña:</label>
-						<input type="text" name="password">
+						<input type="password" name="password" id="password">
 						
 					</div>
 					<div id="botones_formulario">
-						<input type="submit" value="Entrar" class="boton">
 						<input type="reset" value="Limpiar" class="boton">
+						<button type="submit" class="boton" onclick="cifrar()">Entrar</button>
 					</div>
 				</form>
 			</div>
@@ -35,5 +35,8 @@
 		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usario-</p>
 	</footer>
 	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/sha1.js"></script>
+	<script type="text/javascript" src="js/cifrarPassword.js"></script>
 </body>
 </html>
