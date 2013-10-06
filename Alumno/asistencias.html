@@ -2,90 +2,127 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sistema de calificaciones en linea</title>
 	<link rel="stylesheet" href="../css/estilo.css">
-	<link rel="stylesheet" href="estilosAlumno.css">
-	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/estilosAlumno.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css">
 </head>
 <body>
-	<header>
-		<div>
-			<p class="sombra_leve">Sistema de calificaciones en linea</p>
-			<img id="logo" src="../img/logo.png" alt="Estudiantes">
-		</div>
-	</header>
-	<nav>
-		<ul>
-			<li><a href="calificaciones.html">Ver calificaciones</a></li>
-			<li><a href="">Ver asistencias</a></li>
-		</ul>
-	</nav>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<header>
+					<div>
+						<p class="sombra_leve">Sistema de calificaciones en linea</p>
+						<img id="logo" src="../img/logo.png" alt="Estudiantes">
+					</div>
+				</header>
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="container" style="width: auto;">
+							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+							<a class="brand" href="index.html">Califix</a>
+							<div class="nav-collapse">
+								<ul class="nav">
+									<li>
+										<a href="calificaciones.html">Ver Calificaciones</a>
+									</li>
+									<li class="active">
+										<a href="asistencias.html">Ver Asistencias</a>
+									</li>
+								</ul>
+																	
+								<ul class="nav pull-right">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-user"></i> Alumno <b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Ver perfil</a></li>
+												<li><a href="#">Cerrar sesion</a></li>
+											</ul>
+									</li>
+								</ul>
+							</div><!-- /.nav-collapse -->
+						</div>
+					</div><!-- /navbar-inner -->
+				</div>
 
-	<section>
-		<div class="buscador">
-		<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
-			<label for="buscar">Buscar Curso</label>
-			<input type="search" id="buscar" name="buscar" />
-		</div>
-		<div class="contenedor">
-			<div class="table-responsive">
-							<table id="tabla_asistencias" class="table">
-							<caption>Curso de ejemplo 1</caption>
-							<thead>
-								<tr>
-									<th>
-										Alumno
-									</th>
-									<th>
-										07/07/2013
-									</th>
-									<th>
-										07/07/2013
-									</th>
-									<th>
-										07/07/2013
-									</th>
-									<th>
-										Porcentaje
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										Valadez Vera Pedro Antonio
-									</td>
-									<td>
-										<input type="checkbox" checked disabled>
-									</td>
-									<td>
-										<input type="checkbox" checked disabled>
-									</td>
-									<td>
-										<input type="checkbox"  disabled>
-									</td>
-									
-									<td>
-										<input type="text">
-									</td>
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<td colspan="5">
-										<label for="porcentaje-grupal">Porcentaje grupal</label>
-										<input type="text" id="porcentaje-grupal" name="porcentaje-grupal">
-									</td>
-								</tr>
-							</tfoot>
-						</table>
+				<section>
+					<div class="buscador">
+					<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
+						<label for="buscar"><i class="icon-search"></i>Buscar Curso</label>
+						<input type="search" id="buscar" name="buscar" />
+					</div>
+					<div class="contenedor">
+						<div class="table-responsive">
+										<table id="tabla_asistencias" class="table">
+										<caption>Curso de ejemplo 1</caption>
+										<thead>
+											<tr>
+												<th>
+													Alumno
+												</th>
+												<th>
+													07/07/2013
+												</th>
+												<th>
+													07/07/2013
+												</th>
+												<th>
+													07/07/2013
+												</th>
+												<th>
+													Porcentaje
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													Valadez Vera Pedro Antonio
+												</td>
+												<td>
+													<input type="checkbox" checked disabled>
+												</td>
+												<td>
+													<input type="checkbox" checked disabled>
+												</td>
+												<td>
+													<input type="checkbox"  disabled>
+												</td>
+												
+												<td>
+													<input type="text">
+												</td>
+											</tr>
+										</tbody>
+										<tfoot>
+											<tr>
+												<td colspan="5">
+													<label for="porcentaje-grupal">Porcentaje grupal</label>
+													<input type="text" id="porcentaje-grupal" name="porcentaje-grupal">
+												</td>
+											</tr>
+										</tfoot>
+									</table>
+						</div>
+
+					</div>
+				</section>
+				<footer>
+					<p  id="pie" class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usuario-</p>
+				</footer>
 			</div>
-
 		</div>
-	</section>
-	<footer>
-		<p  id="pie" class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usuario-</p>
-	</footer>
-	
+	</div>
+
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-collapse.js"></script>
 </body>
 </html>
