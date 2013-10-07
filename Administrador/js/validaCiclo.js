@@ -15,7 +15,7 @@ jQuery(document).ready(function($){
 	// valida cuando se da click en el boton de enviar
 	$(".enviar").click(function (e) {
 
-		//e.preventDefault();//para evitar que se envie antes de validar
+		e.preventDefault();//para evitar que se envie antes de validar
 		//si ya hay mensajes de error se borran para validar de nuevo
 		$(".error").remove();
 
@@ -24,6 +24,22 @@ jQuery(document).ready(function($){
 			$(DIV).text("Ingresa un cliclo escolar")
 					.addClass("error")
 			    	.clone().insertAfter($("#ciclo"))
+		}
+				else
+		{
+
+			var valor = $("#ciclo").val();
+			var expresion =/^[0-9]{4}\-[AaBbVv]{1}$/;
+
+			if(!valor.match(expresion))//se valida que el correo sea valido
+			{
+				cont=1;
+
+				$(DIV).text("Ciclo invalido")
+					.addClass("error")
+			    	.clone().insertAfter($("#ciclo"))
+			}
+
 		}
 
 		
