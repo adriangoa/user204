@@ -29,10 +29,10 @@
 								<a class="brand" href="index.html">Califix</a>
 								<div class="nav-collapse">
 									<ul class="nav">
-										<li class="active">
+										<li>
 											<a href="agregarCiclo.html">Agregar Ciclo</a>
 										</li>
-										<li>
+										<li class="active">
 											<a href="editarCiclo.html">Editar Ciclo</a>
 										</li>													
 									</ul>
@@ -52,6 +52,11 @@
 			</div>
 				<section>
 
+					<div class="buscador">
+					<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
+						<label for="buscar"><i class="icon-search"></i>Buscar ciclo existente</label>
+						<input type="search" id="buscar" name="buscar" />
+					</div>
 					<div class="contenedor">
 						<div id="cuadro_formulario">
 							<form action="#">
@@ -72,7 +77,7 @@
 								</div>
 								<div id="botones_formulario">
 									<input type="reset" value="Limpiar" class="boton">
-									<input type="submit" value="Agregar" class="boton enviar">
+									<input type="submit" value="Modificar" class="boton enviar">
 								</div>
 							</form>
 						</div>
