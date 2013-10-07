@@ -15,6 +15,8 @@ jQuery(document).ready(function($){
 
 	$(".enviar").click(function (e) {
 		e.preventDefault();//para evitar que se envie antes de validar
+		$(".error").remove();
+
 
 		cont=0;
 
