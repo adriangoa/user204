@@ -1,0 +1,27 @@
+*****************************
+* 	ISSUES              *
+*****************************
+
+
+3.Implementar un calendario con JS para los campos de fechas
+
+
+7.En la página Alta Alumnos debería existir un botón para seleccionar todos los checkbox o para quitarles la selección
+
+8.El formulario de alta alumnos http://alanturing.cucei.udg.mx/cc409/user204/Profesor/altaAlumnos.html# no marca error si doy en agregar sin haber seleccionado un solo alumno
+
+9.No marca error si di en guardar y no seleccione checkbox
+
+10.Los campos deben aceptar NP y SD
+   No me queda claro para que son los checkbox
+
+12.Validacion de configurar curso
+   No valida que los campos se hayan llenado
+   No valida que el porcentaje sean solo números
+
+13.Formularios dinámicos con JS en configurar curso
+   El botón mas debería crear nuevos campos para agregar mas rubros de evaluación
+
+14.La páinga de asistencias para los alumnos solo debería mostrar las asistencias y los porcentajes, pero no con permisos de edición
+
+15.Cuando el alumno ve sus calificaciones debe poder ver el desglose de cada calificación en cada actividad

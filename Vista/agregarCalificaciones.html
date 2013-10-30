@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sistema de calificaciones en linea</title>
+	<link rel="stylesheet" href="./www/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap-responsive.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+	<header>
+		<div>
+			<p class="sombra_leve">Sistema de calificaciones en linea</p>
+			<img src="./www/img/logo.svg" id="logo"></img>
+		</div>
+	</header>
+	<div class="navbar">
+					<div class="navbar-inner">
+						<div class="container" style="width: auto;">
+							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+							<a class="brand" href="index.php?ctl=Profesor&act=0">Califix</a>
+							<div class="nav-collapse">
+								<ul class="nav">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li class="nav-header">
+												Cursos
+											</li>
+											<li><a href="index.php?ctl=Profesor&act=agregarCurso">Agregar</a></li>
+											<li><a href="index.php?ctl=Profesor&act=configurarCurso">Configuar</a></li>
+											<li class="divider"></li>
+											<li class="nav-header">
+												Calificaciones y asistencias
+											</li>
+											<li><a href="index.php?ctl=Profesor&act=agregarCalificaciones">Agregar calificaciones</a></li>
+											<li><a href="index.php?ctl=Profesor&act=agregarAsistencias">Nombrar Asistencia</a></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alumnos <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li class="nav-header">
+												Registro y alta
+											</li>
+											<li><a href="index.php?ctl=Profesor&act=agregarAlumno">Registrar nuevo alumno</a></li>
+											<li><a href="index.php?ctl=Profesor&act=altaAlumnos">Dar de alta a curso</a></li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="nav pull-right">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-user"></i> Michelle Torres <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Ver perfil</a></li>
+											<li><a href="#">Cerrar sesion</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div><!-- /.nav-collapse -->
+						</div>
+					</div><!-- /navbar-inner -->
+				</div>
+	<section>
+		<div class="buscador">
+		<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
+			<label for="buscar"><i class="icon-search"></i>Buscar Curso</label>
+			<input type="search" id="buscar" name="buscar" />
+		</div>
+		<div class="contenedor">
+			<div class="resultado">
+				<table class="bordered">
+					<thead>
+						<tr>
+							<th >Ciclo</th>
+							<th >NombreCurso</th>
+							<th >Academia</th>
+							<th >NRC</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td onClick="desplegar(numero)" colspan="4">
+								<p id="mostrar_ocultar" class="puntero">Mostrar Alumnos</p>
+							</td>
+						</tr>
+					</tbody>
+					<tbody id="contenido" style="display:none;">
+						<form action="index.php?ctl=Profesor&act=configurarCurso" method="post">
+							<tr id="Actividad" style="display:" class="idAct">
+								<td>
+									<p>Actividad</p>
+								</td>
+								<td>
+									<p>Porcentaje</p>
+								</td>
+								<td >
+									<button class="btn btn-mini hoja" type="submit">Agregar hoja evaluacion</button>
+								</td>
+								<td >
+									<button class="btn btn-info btn-mini mostrarHoja"  id="idAct" type="submit">Mostrar hoja evaluacion</button>
+								</td>
+							</tr >
+							<tr id="fin">
+								<input type="hidden" value="idCurso" name="curso">
+									<td><input type="text" id="actividad" placeholder="Actividad" name="actividad"></td>
+									<td><input type="number" id="porcentaje" placeholder="%porcentaje" name="porcentaje"> </td>
+											
+									<td colspan="4">
+										<button type="submit"class="btn btn-success btn-mini agregar" id="boton-agregar">Agregar</button>
+									</td>
+								</tr>
+						</form>
+					</tbody>
+				</table>
+			</div>
+		</div id="fin">
+	</section>
+	<footer>
+		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
+	</footer>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./www/js/jquery.js"></script>
+	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
+	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="./www/js/buscador.js"></script>
+	<script type="text/javascript" src="./www/js/desplegarAlumnos.js"></script>
+	<script type="text/javascript" src="./www/js/validaFormProfesor-calificaciones.js"></script>
+</body>
+</html>
