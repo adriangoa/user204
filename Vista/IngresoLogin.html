@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Sistema de calificaciones en linea</title>
+	<link rel="stylesheet" href="./www/css/estilo.css">
+</head>
+<body>
+	<header>
+		<div>
+			<p class="sombra_leve">Sistema de calificaciones en linea</p>
+			<img id="logo" src="./www/img/logo.png" alt="Estudiantes">
+		</div>
+	</header>
+	<section>
+		<div class="contenedor">
+			<div id="cuadro_formulario">
+				<form action="index.php" method="post">
+					<div id="campos_entrada">
+						<label for="usuario">Usuario:</label>
+						<input type="text" name="usuario" id="usuario"><br>
+						<label for="password">Contraseña:</label>
+						<input type="password" name="password" id="password">
+						
+					</div>
+					<div id="botones_formulario">
+						<input type="reset" value="Limpiar" class="boton">
+						<button type="submit" class="boton enviar">Entrar</button>
+					</div>
+				</form>
+			</div>
+
+								<ul class="nav">
+									<li>
+										<a href="recuperar_password.html">Olvidé mi contraseña</a>
+									</li>
+										
+								</ul>
+		</div>
+	</section>
+	<footer>
+		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usario-</p>
+	</footer>
+	
+	<script type="text/javascript" src="./www/js/jquery.js"></script>
+	<script type="text/javascript" src="./www/js/sha1.js"></script>
+	<script type="text/javascript" src="./www/js/validaLogin.js"></script>
+	<script type="text/javascript" src="./www/js/cifrarPassword.js"></script>
+</body>
+</html>

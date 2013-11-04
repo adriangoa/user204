@@ -1,0 +1,38 @@
+@media (max-width: 480px) {
+
+    nav ul a{
+    font-size: 15px;
+  }
+
+  nav{
+    height: 40px;
+  }
+
+  p#pie{
+    font-size: 9px;
+  }
+}
+
+@media (max-height: 480px){
+
+  nav ul a{
+    font-size: 28px;
+  }
+
+  nav{
+    height: 40px;
+  }
+    p#pie{
+    font-size: 12px;
+  }
+}
+
+@media (min-height: 600px){
+
+  nav ul a{
+    font-size: 28px;
+  }
+
+  nav{
+    height: 40px;
+}

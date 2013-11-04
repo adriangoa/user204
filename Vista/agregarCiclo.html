@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sistema de calificaciones en linea</title>
+	<link rel="stylesheet" href="./www/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap-responsive.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<header>
+					<div>
+						<p class="sombra_leve">Sistema de calificaciones en linea</p>
+						<img id="logo" src="./www/img/logo.png" alt="Estudiantes">
+					</div>
+				</header>
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="container" style="width: auto;">
+								<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</a>
+								<a class="brand" href="index.php?ctl=Administrador&act=0">Califix</a>
+								<div class="nav-collapse">
+									<ul class="nav">
+										<li class="active">
+											<a href="index.php?ctl=Administrador&act=agregarCiclo">Agregar Ciclo</a>
+										</li>
+										<li>
+											<a href="index.php?ctl=Administrador&act=editarCiclo">Editar Ciclo</a>
+										</li>													
+									</ul>
+														
+									<ul class="nav pull-right">
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-user"></i> Admin <b class="caret"></b></a>
+												<ul class="dropdown-menu">
+													<li><a href="#">Ver perfil</a></li>
+													<li><a href="#">Cerrar sesion</a></li>
+												</ul>
+										</li>
+									</ul>
+						</div><!-- /.nav-collapse -->
+					</div>
+				</div><!-- /navbar-inner -->
+			</div>
+				<section>
+
+					<div class="contenedor">
+						<div id="cuadro_formulario">
+							<form action="index.php?ctl=Administrador&act=agregarCiclo" method="post">
+								<div id="campos_entrada">
+									<label for="ciclo">Ciclo:</label>
+									<input type="text" name="ciclo" id="ciclo" ><br>
+
+									<label for="fecha-inicio">Fecha de inicio:</label>
+									<input type="date" name="fecha-inicio" id="fecha-inicio"><br>
+
+									<label for="fecha-finalizacion">Fecha de finalizacion:</label>
+									<input type="date" name="fecha-finalizacion" id="fecha-finalizacion"><br>
+
+									<!--Se genera dinamicamente-->
+									<div id="div-dia-no-efectivo0" class="no-efectivo">
+										<label for="dia-no-efectivo0">
+										Dia no efectivo:</label>
+										<input type="date" name="dia-no-efectivo0" id="fecha-no-efectivo0">
+										<input type="text" name="motivo0" placeholder="Motivo" id="motivo0">
+										<button class="btn-mas" >+</button>
+									</div>
+									
+								</div>
+								<div id="botones_formulario">
+									<input type="reset" value="Limpiar" class="boton">
+									<input type="submit" value="Agregar" class="boton enviar">
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+				<footer>
+					<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usario-</p>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="./www/js/jquery.js"></script>
+	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
+	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="./www/js/validaCiclo.js" ></script>
+</body>
+</html>
