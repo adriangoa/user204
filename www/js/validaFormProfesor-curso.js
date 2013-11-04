@@ -64,6 +64,17 @@ jQuery(document).ready(function($){
 			    	.insertAfter($("#seccion"));
 			sinError= false;
 		}
+		else
+		{
+			var valor = $("#seccion").val();
+			if(!valor.match(/^[a-zA-z]{1}[0-9]{2}$/))//las seccion tipo "d06"
+			{
+				$(error).text("La seccion es invalida")
+					.addClass("error")
+			    	.clone().insertAfter($("#seccion"));
+			   	sinError= false;
+			}
+		}
 
 		if($("#nrc").val()=="")
 		{
@@ -75,18 +86,21 @@ jQuery(document).ready(function($){
 		else
 		{
 			var valor = $("#nrc").val();
-			if(!valor.match(/[0-9]+/))//los nrc solo haceptan numeros
+			if(!valor.match(/^[0-9]{5}$/))//los nrc solo haceptan numeros
 			{
-				$(error).text("El nrc solo admite numeros")
-					.addClass("error")
-			    	.clone().insertAfter($("#nrc"));
+				if(valor.length<5)
+					$(error).text("El nrc debe se de 5 digitos");
+				else
+					$(error).text("El nrc solo admite numeros");
+				$(error).addClass("error")
+			    		.clone().insertAfter($("#nrc"));
 			   	sinError= false;
 			}
 		}
 
 		if($("#academia").val()=="")
 		{
-			$(error).text("Ingresa la seccion")
+			$(error).text("Selecciona una academia")
 					.addClass("error")
 			    	.clone().insertAfter($("#academia"));
 			sinError= false;
@@ -110,12 +124,53 @@ jQuery(document).ready(function($){
 			    	.clone().insertAfter($("#hora-inicio"+i))
 			    	sinError= false;
 	  		}
+	  		else
+	  		{
+	  			//habra que validar la fecha
+	  			var valor = $("#hora-inicio"+i).val();
+				if(!valor.match(/^[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/))
+				{
+				
+						$(error).text("La hora de inicio es invalida")
+								.addClass("error")
+				    			.clone().insertAfter($("#hora-inicio"+i));
+				   	sinError= false;
+				}
+	  			
+	  		}
 	  		if($("#hora-fin"+i).val()=="")
 	  		{
 	  			$(error).text("Ingresa una hora valida")
 					.addClass("error")
 			    	.clone().insertAfter($("#hora-fin"+i))
 			    	sinError= false;
+	  		}
+	  		else
+	  		{
+	  			//validar fecha de fin
+	  			var valor = $("#hora-fin"+i).val();
+				if(!valor.match(/^[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/))
+				{
+				
+						$(error).text("La hora de fin es invalida")
+								.addClass("error")
+				    			.clone().insertAfter($("#hora-fin"+i));
+				   	sinError= false;
+				}
+				else
+				{
+					var inicio = $("#hora-inicio"+i).val();
+					var fin = $("#hora-fin"+i).val();
+					inicio = inicio.split(":");
+					fin = fin.split(":");
+					if(inicio[0]>fin[0] || (inicio[0]==fin[0] && inicio[1]==fin[1]) || (inicio[0]==fin[0] && inicio[1]>fin[1]))
+					{
+						$(error).text("La hora inicio debe ser menor a la hora final")
+								.addClass("error")
+				    			.clone().insertAfter($("#hora-fin"+i));
+				   		sinError= false;
+					}
+				}
 	  		}
 	  		if($("#dia"+i).val()=="")
 	  		{
@@ -149,9 +204,9 @@ jQuery(document).ready(function($){
   	//se crea el nuevo elemento
   	var cadena="";
   	cadena+="<label for=\"hora-inicio"+nuevaPosicion+"\">Hora inicio:</label>";
-	cadena+="<input type=\"time\" name=\"hora-inicio"+nuevaPosicion+"\" id=\"hora-inicio"+nuevaPosicion+"\"><br>";
+	cadena+="<input type=\"text\" name=\"hora-inicio"+nuevaPosicion+"\" id=\"hora-inicio"+nuevaPosicion+"\" placeholder=\"00:00\"><br>";
 	cadena+="<label for=\"hora-fin"+nuevaPosicion+"\">Hora fin:</label>";
-	cadena+="<input type=\"time\" name=\"hora-fin"+nuevaPosicion+"\" id=\"hora-fin"+nuevaPosicion+"\"><br>";								
+	cadena+="<input type=\"text\" name=\"hora-fin"+nuevaPosicion+"\" id=\"hora-fin"+nuevaPosicion+"\" placeholder=\"00:00\"><br>";								
 	cadena+="<label for=\"dia"+nuevaPosicion+"\">Dia:</label>";
 	cadena+="<select id=\"dia"+nuevaPosicion+"\" name=\"dia"+nuevaPosicion+"\">";
 	cadena+="<option value=\"\"></option><option value=\"lunes\">Lunes</option>";

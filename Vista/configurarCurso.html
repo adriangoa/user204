@@ -7,6 +7,9 @@
 	<link rel="stylesheet" href="./www/css/estilo.css">
 	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/redmond/jquery-ui.css">
+	
+
 </head>
 <body>
 	<div class="container-fluid">
@@ -95,7 +98,7 @@
 								</tbody>
 								<tbody id="contenido" style="display:none;">
 									<form action="index.php?ctl=Profesor&act=configurarCurso" method="post">
-										<tr id="Actividad" style="display:">
+										<tr id="Actividad" style="display:" class="idAct">
 											<td>
 												<p>Actividad</p>
 											</td>
@@ -103,10 +106,10 @@
 												<p>Porcentaje</p>
 											</td>
 											<td >
-												<button class="btn btn-mini" type="submit">Agregar hoja evaluacion</button>
+												<button class="btn btn-mini hoja" type="submit">Agregar hoja evaluacion</button>
 											</td>
 											<td >
-												<button class="btn btn-info btn-mini" type="submit">Mostrar hoja evaluacion</button>
+												<button class="btn btn-info btn-mini mostrarHoja"  id="idAct" type="submit">Mostrar hoja evaluacion</button>
 											</td>
 										</tr >
 										<tr id="fin">
@@ -123,6 +126,19 @@
 							</table>
 						</div>
 					</div id="fin">
+					<!--Formulario oculto para las hojas de evaluacion-->
+					
+					<form action="index.php?ctl=Profesor&act=hojaExtra" method="post" id="formulario-hojas" style="display:none">
+						<label for="cantidad-hojas">Cantidad:</label>
+						<div class="input-append">
+							<input type="text" id="cantidad-hojas" name="cantidad-hojas" class="input-mini">
+							<button class="btn generar" type="button">Generar</button>
+						</div>
+						<div id="contenedor-inputs">
+						</div>
+					</form>
+						
+					</div>
 				</section>
 				<footer>
 					<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usuario</p>
@@ -131,10 +147,14 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="./www/js/jquery.js"></script>
+	<script type="text/javascript" src="./www/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
 	<script type="text/javascript" src="./www/js/buscador.js"></script>
 	<script type="text/javascript" src="./www/js/desplegar.js"></script>
+	<script type="text/javascript" src="./www/js/Ajax.js"></script>
+	<script type="text/javascript" src="./www/js/mostrarHojaEvaluacion.js"></script>
 	<script type="text/javascript" src="./www/js/validaConfigurarCurso.js"></script>
+	<script type="text/javascript" src="./www/js/validaHojaEvaluacion.js"></script>
 </body>
 </html>

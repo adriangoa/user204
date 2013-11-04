@@ -29,7 +29,7 @@ jQuery(document).ready(function($){
 		else
 		{
 			var valor = $("#actividad"+id).val();
-			var expresion =/^[0-9a-zA-Z]{1,}$/;
+			var expresion =/^[0-9a-zA-Z" "]{1,}$/;
 
 			if(!valor.match(expresion))//se valida que el campos tenga letras o numeros,por eso de los espacios
 			{
@@ -41,6 +41,39 @@ jQuery(document).ready(function($){
 		{
 			cadenaErrores+=" - Ingresa un porcentaje";
 			sinError= false;
+		}
+		else
+		{
+			//se valida que se un digito y que la suma no pace de 100 o tenga valor negativo
+			var valor = $("#porcentaje"+id).val();
+			var expresion =/^[0-9]{1,}$/;
+
+			if(!valor.match(expresion) || parseInt(valor)<=0)//se valida que el campos tenga letras o numeros,por eso de los espacios
+			{
+				cadenaErrores+="Ingresa un valor valido, digito";
+				sinError= false;
+			}
+			else
+			{
+				//se suman los anteriores porcentajes
+				//var porcentajes=$( "#contenido"+id+" tr td:nth-child(2)" );
+				var porcentajes=$( "#contenido"+id+" tr" );
+				var valorPorcentajeActual=null;
+				var totalPorcentajes=0;
+				var totalActividades = porcentajes.length;
+				for(var i=2; i<=totalActividades;i++)
+				{
+					valorPorcentajeActual=$( "#contenido"+id+" tr:nth-child("+i+") td:nth-child(2)");
+					totalPorcentajes+= parseInt(valorPorcentajeActual.text());
+				}
+				if(totalPorcentajes+parseInt(valor)>100)//se pasa del total
+				{
+					cadenaErrores+=" - El porcentaje total excede el maximo(100%)";
+					sinError= false;
+				}
+
+			}
+
 		}
 
 		if(sinError==false)

@@ -185,6 +185,72 @@ class ProfesorMdl
 			    	//echo "Message has been sent";
 			    }
 	}
+
+	function agregarHojaExtra($actividad,$cantidad,$porcentajes)
+	{
+		for($i = 0; $i<$cantidad; $i++)
+		{
+			$query = 
+				"INSERT INTO hojasextras
+				(porcentaje, id_actividad)
+				VALUES (
+					'".$porcentajes[$i]."',
+					'".$actividad."'
+				)";
+			$r = $this -> driver -> query($query);
+			if($r === FALSE)
+				return FALSE;
+		}
+	}
+
+	function obtenerHojasExtras($idActividad)
+	{
+		$consulta ="SELECT * FROM hojasextras WHERE id_actividad=$idActividad";
+		$resultado = $this -> driver->query($consulta);
+
+		if($resultado === FALSE)
+				return FALSE;
+		//se procesa el resultado
+		else
+		{
+			while($row =$resultado->fetch_assoc())
+				$hojas[]=$row;
+			return $hojas;
+		}
+		
+	}
+
+	function obtenerAlumnos()
+	{
+		$consulta ="SELECT * FROM alumnos";
+		$resultado = $this -> driver->query($consulta);
+
+		if($resultado === FALSE)
+				return FALSE;
+		//se procesa el resultado
+		else
+		{
+			while($row =$resultado->fetch_assoc())
+				$alumnos[]=$row;
+			return $alumnos;
+		}
+	}
+
+	function darAltaAlumnos($codigos,$curso)
+	{
+		foreach ($codigos as  $codigo) {
+			$query = 
+				"INSERT INTO alumnos_cursos
+				(codigo, id_curso)
+				VALUES (
+					'".$codigo."',
+					'".$curso."'
+				)";
+			$r = $this -> driver -> query($query);
+			if($r === FALSE)
+				return FALSE;
+		}
+	}
 }
 
 ?>

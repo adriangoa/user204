@@ -76,76 +76,53 @@
 			<input type="search" id="buscar" name="buscar" />
 		</div>
 		<div class="contenedor">
-			<div id="cuadro_formulario-ancho">
-				<form action="#" method="GET">
-					<div id="campos_entrada" class="table-responsive">
-						<table id="tabla-calificaciones" class="table">
-							<caption>Curso de Ejemplo 1</caption>
-							<thead>
-								<tr>
-									<th>
-										Codigo
-									</th>
-									<th>
-										Nombre
-									</th>
-									<!--colspan segun si hay hoja extra de evaluacion-->
-									<th colspan="3">
-										Tareas
-									</th>
-									<th colspan="2">
-										Proyecto final
-									</th>
-									<th colspan="2">
-										Examen departamental
-									</th>
-									<th>
-										SD
-									</th>
+			<div class="resultado">
+				<table class="bordered">
+					<thead>
+						<tr>
+							<th >Ciclo</th>
+							<th >NombreCurso</th>
+							<th >Academia</th>
+							<th >NRC</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td onClick="desplegar(numero)" colspan="4">
+								<p id="mostrar_ocultar" class="puntero">Mostrar Alumnos</p>
+							</td>
+						</tr>
+					</tbody>
+					<tbody id="contenido" style="display:none;">
+						<form action="index.php?ctl=Profesor&act=configurarCurso" method="post">
+							<tr id="Actividad" style="display:" class="idAct">
+								<td>
+									<p>Actividad</p>
+								</td>
+								<td>
+									<p>Porcentaje</p>
+								</td>
+								<td >
+									<button class="btn btn-mini hoja" type="submit">Agregar hoja evaluacion</button>
+								</td>
+								<td >
+									<button class="btn btn-info btn-mini mostrarHoja"  id="idAct" type="submit">Mostrar hoja evaluacion</button>
+								</td>
+							</tr >
+							<tr id="fin">
+								<input type="hidden" value="idCurso" name="curso">
+									<td><input type="text" id="actividad" placeholder="Actividad" name="actividad"></td>
+									<td><input type="number" id="porcentaje" placeholder="%porcentaje" name="porcentaje"> </td>
+											
+									<td colspan="4">
+										<button type="submit"class="btn btn-success btn-mini agregar" id="boton-agregar">Agregar</button>
+									</td>
 								</tr>
-							</thead>
-							<tbody>
-									<td>
-										210832376
-									</td>
-									<td>
-										Orosco Eguia Jose cristobal
-									</td>
-									<!--segun la hoja extra de evalucion se generaria dinamicamente-->
-									<td>
-										<input type="number" min="0" max="10">
-									</td>
-									<td>
-										<input type="number" min="0" max="10">
-									</td>
-									<td>
-										<input type="number" min="0" max="10">
-									</td>
-									<td>
-										<input type="number" min="0" max="10">
-									</td>
-									<td>
-										<input type="checkbox" title="NP">
-									</td>
-									<td>
-										<input type="number" min="0" max="10">
-									</td>
-									<td>
-										<input type="checkbox" title="NP">
-									</td>
-									
-									<td>
-										<input type="checkbox" title="SD">
-									</td>
-							</tbody>
-						</table>
-					</div>
-					<div id="botones_formulario">
-						<input type="submit" value="Guardar" class="boton enviar">
-					</div>
-				</form>
+						</form>
+					</tbody>
+				</table>
 			</div>
-		</div>
+		</div id="fin">
 	</section>
 	<footer>
 		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
@@ -156,6 +133,8 @@
 	<script type="text/javascript" src="./www/js/jquery.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="./www/js/buscador.js"></script>
+	<script type="text/javascript" src="./www/js/desplegarAlumnos.js"></script>
 	<script type="text/javascript" src="./www/js/validaFormProfesor-calificaciones.js"></script>
 </body>
 </html>

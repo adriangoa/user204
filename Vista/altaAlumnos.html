@@ -72,7 +72,7 @@
 	<section>
 		<div class="contenedor">
 			<div id="cuadro_formulario">
-				<form action="#" method="GET">
+				<form action="index.php?ctl=Profesor&act=altaAlumnos" method="post">
 					<div id="campos_entrada" class="table-responsive">
 						<table class="table">
 							<caption>Alumnos Existentes</caption>
@@ -89,49 +89,25 @@
 									</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="fila-alumno">
 								<tr>
 									<td>
-										3314986623
+										CODIGO
 									</td>
 									<td>
-										Jane doe
+										NOMBRE
 									</td>
 									<td>
-										<input type="checkbox" name="seleccionados" value="codigo">
+										<input type="checkbox" name="seleccionados[]" value="CODIGO">
 									</td>
 								</tr>
-								<tr>
-									<td>
-										3314986623
-									</td>
-									<td>
-										Jane doe
-									</td>
-									<td>
-										<input type="checkbox" name="seleccionados" value="codigo">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										3314986623
-									</td>
-									<td>
-										Jane doe
-									</td>
-									<td>
-										<input type="checkbox" name="seleccionados" value="codigo">
-									</td>
-								</tr>
-							</tbody>
+							</tbody id="fin">
 							<tfoot>
 								<tr>
 									<td colspan="3">
-										<select>
-											<option value="ejemplo">Programacion web</option>
-											<option value="ejemplo">Calculo</option>
-											<option value="ejemplo">Prolog</option>
-										</select>
+										<select id="select-cursos" name="curso">
+											<option value="VALORCURSO">NOMBRECURSO</option>
+										</select id="fin">
 									</td>
 								</tr>
 							</tfoot>

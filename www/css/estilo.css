@@ -434,6 +434,17 @@ form #campos_entrada input.oculto{
 	width: 35px;
 }
 
+#formulario-hojas label{
+	text-align: center;
+	display: block;
+	vertical-align: middle;
+	width: auto;
+	margin: 0 1em 0 0;
+}
+#formulario-hojas input{
+	margin: 0;
+}
+
 
 /*clases de bootstrap*/
 div.navbar{
