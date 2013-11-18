@@ -74,10 +74,10 @@
 			<div id="cuadro_formulario">
 				<form action="index.php?ctl=Profesor&act=altaAlumnos" method="post">
 					<div id="campos_entrada" class="table-responsive">
-						<table class="table">
+						<table class="bordered">
 							<caption>Alumnos Existentes</caption>
 							<thead>
-								<tr>
+								<tr valign="middle" >
 									<th>
 										Codigo
 									</th>
@@ -86,6 +86,9 @@
 									</th>
 									<th>
 										Seleccionados
+									</th>
+									<th >
+										<button title="Seleccionar todos los alumnos" id="seleccionar-todo"class="btn btn-info btn-mini">Todos</button>
 									</th>
 								</tr>
 							</thead>
@@ -97,14 +100,14 @@
 									<td>
 										NOMBRE
 									</td>
-									<td>
-										<input type="checkbox" name="seleccionados[]" value="CODIGO">
+									<td colspan="2">
+										<input type="checkbox" name="seleccionados[]" value="IDALUMNO">
 									</td>
 								</tr>
 							</tbody id="fin">
 							<tfoot>
 								<tr>
-									<td colspan="3">
+									<td colspan="4">
 										<select id="select-cursos" name="curso">
 											<option value="VALORCURSO">NOMBRECURSO</option>
 										</select id="fin">
@@ -116,14 +119,14 @@
 					<div id="botones_formulario">
 					
 						<input type="reset" value="Limpiar" class="boton">
-						<input type="submit" value="Agregar" class="boton">
+						<input type="submit" value="Agregar" class="boton" id="btn-agregar">
 					</div>
 				</form>
 			</div>
 		</div>
 	</section>
 	<footer>
-		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usuario</p>
+		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
 	</footer>
 	</div>
 		</div>
@@ -132,5 +135,6 @@
 	<script type="text/javascript" src="./www/js/jquery.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="./www/js/validaAltaAlumno.js"></script>
 </body>
 </html>
