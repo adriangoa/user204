@@ -72,36 +72,23 @@
 	<section>
 		<div class="contenedor">
 			<div id="cuadro_formulario">
-				<form action="#" method="get">
+				<form action="index.php?ctl=Profesor&act=clonarCurso" method="post">
 					<div id="campos_entrada">
-						<label for="ciclo">Ciclo escolar:</label>
-						<select name="ciclo">
-							<option>2012A</option>
-							<option>2012B</option>
-							<option>2013A</option>
-							<option>2013B</option>
-							<option>2014A</option>
+						<label for="cicloBase">Ciclo del curso: </label>
+						<select id='cicloBase' name="cicloBase">
+							<option></option>
 						</select><br>
-						<label for="ciclo">Curso a clonar:</label>
-						<select name="ciclo">
-							<option>Ejemplo curso</option>
-							<option>Ejemplo curso</option>
-							<option>Ejemplo curso</option>
-							<option>Ejemplo curso</option>
-							<option>Ejemplo curso</option>
+						<label for="cursosBase">Curso a clonar: </label>
+						<select id='cursosBase' name="cursoBase">
 						</select><br>
-						<label for="ciclo">Clonar a:</label>
-						<select name="ciclo">
-							<option>2012A</option>
-							<option>2012B</option>
-							<option>2013A</option>
-							<option>2013B</option>
-							<option>2014A</option>
-						</select><br>
+						<label for="cicloClonar">Clonar en: </label>
+						<select id='cicloClonar' name="cicloClonar">
+							<option></option>
+						</select>
 					</div>
 					<div id="botones_formulario">
 						<button type="reset" class="boton">Limpiar</button>
-						<button type="submit" class="boton">Clonar</button>
+						<button type="submit" class="boton" id="btn-clonar">Clonar</button>
 					</div>
 				</form>
 			</div>
@@ -116,5 +103,7 @@
 	<script type="text/javascript" src="./www/js/jquery.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="./www/js/clonarCurso.js"></script>
+	<script type="text/javascript" src="./www/js/validaClonarCurso.js"></script>
 </body>
 </html>

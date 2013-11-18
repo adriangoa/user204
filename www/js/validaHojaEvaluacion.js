@@ -32,6 +32,7 @@ jQuery(document).ready(function($){
 
 	$(".generar").click(function (e){
 
+
 		//se obtiene la cantidad del input
 		var cantidad = $("#cantidad-hojas").val();
 		//se valida que la cantidad se un digito valido
@@ -72,6 +73,14 @@ jQuery(document).ready(function($){
 						});
 			$("#contenedor-inputs").append($(INPUT).clone());
 
+			//input hidden para saber el curso
+			$(INPUT).attr({
+						'type': 'hidden',
+						'value':  $("tr."+$(this).attr("id")).attr("id"),//$("tr."+$(this).attr("id")).parent().parent().attr("id")
+						'name':'id-curso',
+						'class':'j'
+						});
+			$("#contenedor-inputs").append($(INPUT).clone());
 			//Por ultimo se genera un boton para enviar el formulario y un input que identificara la actividad
 			$(INPUT).attr({
 						'type': 'hidden',

@@ -11,15 +11,31 @@ class LoginMdl
 
 	function ingresar($usuario, $password)
 	{
-		$query = "SELECT * FROM usuarios WHERE usuario =\"$usuario\" AND password=\"$password\"";
-		$r = $this -> driver -> query($query);
-		if($r === FALSE)
+
+		//Primero se busca en la tabla de usuarios
+		$query = "SELECT * FROM alumnos WHERE codigo =\"$usuario\" AND password=\"$password\"";
+		$r = $this -> driver -> query($query);//regresa un objeto
+		if($r->num_rows==0)
+			{
+
+				//Luego se busca en la de profesores
+				$query2 = "SELECT * FROM profesores WHERE codigo =\"$usuario\" AND password=\"$password\"";
+				$r = $this -> driver -> query($query2);
+				if($r->num_rows==0)
+				{
+					//Por ultimo se busca en la de administradores
+					$query3 = "SELECT * FROM administradores WHERE codigo =\"$usuario\" AND password=\"$password\"";
+					$r = $this -> driver -> query($query3);
+				}
+			}
+		if($r->num_rows==0)
 			return FALSE;
 		else
 		{
 			$row = $r -> fetch_assoc();
 			return $row;
 		}
+		
 	}
 }
 
