@@ -70,68 +70,59 @@
 					</div><!-- /navbar-inner -->
 				</div>
 	<section>
-		<div class="contenedor">
-			<div id="cuadro_formulario-ancho">
-				<form action="#" method="GET">
-					<div id="campos_entrada" class="table-responsive">
-						<table class="table">
-							<caption>Curso de ejemplo 1</caption>
-							<thead>
-								<tr>
-									<th>
-										Alumno
-									</th>
-									<th>
-										07/07/2013
-									</th>
-									<th>
-										09/07/2013
-									</th>
-									<th>
-										11/07/2013
-									</th>
-									<th>
-										Porcentaje
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										Valadez Vera Pedro Antonio
-									</td>
-									<td>
-										<input type="checkbox" name="asistencia[]" value="fecha">
-									</td>
-									<td>
-										<input type="checkbox" name="asistencia[]" value="fecha">
-									</td>
-									<td>
-										<input type="checkbox" name="asistencia[]" value="fecha">
-									</td>
-									<td>
-										<p id="">15%</p>
-									</td>
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<td colspan="5">
-										<p id="">Porcentaje grupal:15%</p>
-									</td>
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-					<div id="botones_formulario">
-						<input type="submit" value="Guardar" class="boton">
-					</div>
-				</form>
-			</div>
+		<div class="buscador">
+			<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
+			<label for="buscar"><i class="icon-search"></i>Buscar </label>
+			<input type="search" id="buscar" name="buscar" />
 		</div>
+		<div class="contenedor">
+			<div class="resultado">
+							<table class="bordered border-mini" >
+								<thead>
+									<tr>
+										<th >Ciclo</th>
+										<th colspan="colspan1">NombreCurso</th>
+										<th colspan="colspan2">Academia</th>
+										<th colspan="colspan3">NRC</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td onClick="desplegar(numero)" colspan="100">
+											<p id="mostrar_ocultar" class="puntero">Mostrar Lista de asistencia</p>
+										</td>
+									</tr>
+								</tbody>
+								<tbody id="contenido" style="display:none;">
+									<form action="index.php?ctl=Profesor&act=agregarAsistencias" method="post">
+										<tr id="idCURSO" style="display:" class="idAct">
+											<td>
+												<p>Alumnos</p>
+											</td id="fechas">
+											<td >
+												<p class="mini">[fecha]</p>
+											</td>
+										</tr id="fin">
+										<tr id="filaAlumno">
+											<td>
+												<p>[nombreAlumno]</p>
+											</td>
+											<td>[checkboxFecha]</td>
+										</tr id="fin">
+										<tr>
+										
+											<td colspan="[colspanBoton]">
+												<button type="submit"class="btn btn-success  agregar" id="boton-agregar">Guardar</button>
+											</td>
+										</tr>
+									</form>
+								</tbody>
+							</table>
+						</div>
+		</div id="fin">
 	</section>
 	<footer>
-		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usuario</p>
+		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
 	</footer>
 			</div>
 		</div>
@@ -140,5 +131,7 @@
 	<script type="text/javascript" src="./www/js/jquery.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="./www/js/buscador.js"></script>
+	<script type="text/javascript" src="./www/js/desplegarAsistencias.js"></script>
 </body>
 </html>

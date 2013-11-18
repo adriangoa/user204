@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="./www/css/estilo.css">
 	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/redmond/jquery-ui.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -94,29 +95,23 @@
 						</tr>
 					</tbody>
 					<tbody id="contenido" style="display:none;">
-						<form action="index.php?ctl=Profesor&act=configurarCurso" method="post">
-							<tr id="Actividad" style="display:" class="idAct">
+						<form action="index.php?ctl=Profesor&act=agregarCalificaciones" method="post">
+							<tr id="idCURSO" style="display:" class="idCOD">
 								<td>
-									<p>Actividad</p>
+									<p>CODIGO</p>
 								</td>
 								<td>
-									<p>Porcentaje</p>
+									<p>NOMBRE</p>
 								</td>
 								<td >
-									<button class="btn btn-mini hoja" type="submit">Agregar hoja evaluacion</button>
+									<button class="btn btn-mini agregarCalificaciones" type="submit" id="idCURSO">Agregar Calificaciones</button>
 								</td>
 								<td >
-									<button class="btn btn-info btn-mini mostrarHoja"  id="idAct" type="submit">Mostrar hoja evaluacion</button>
+									<button class="btn btn-info btn-mini mostrarCalificaciones"  id="idCOD" type="submit">Ver calificaciones</button>
 								</td>
 							</tr >
 							<tr id="fin">
-								<input type="hidden" value="idCurso" name="curso">
-									<td><input type="text" id="actividad" placeholder="Actividad" name="actividad"></td>
-									<td><input type="number" id="porcentaje" placeholder="%porcentaje" name="porcentaje"> </td>
-											
-									<td colspan="4">
-										<button type="submit"class="btn btn-success btn-mini agregar" id="boton-agregar">Agregar</button>
-									</td>
+								
 								</tr>
 						</form>
 					</tbody>
@@ -125,7 +120,7 @@
 		</div id="fin">
 	</section>
 	<footer>
-		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usuario</p>
+		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
 	</footer>
 			</div>
 		</div>
@@ -134,6 +129,11 @@
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
 	<script type="text/javascript" src="./www/js/buscador.js"></script>
+	<script type="text/javascript" src="./www/js/Ajax.js"></script>
+	<script type="text/javascript" src="./www/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="./www/js/mostrarFormularioCalificaciones.js"></script>
+	<script type="text/javascript" src="./www/js/mostrarCalificaciones.js"></script>
+	<script type="text/javascript" src="./www/js/validaFormularioCalificaciones.js"></script>
 	<script type="text/javascript" src="./www/js/desplegarAlumnos.js"></script>
 	<script type="text/javascript" src="./www/js/validaFormProfesor-calificaciones.js"></script>
 </body>
