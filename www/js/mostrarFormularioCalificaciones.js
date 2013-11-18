@@ -61,7 +61,11 @@ jQuery(document).ready(function($){
 								'name': json[i].id+"-"+e,
 								'id': json[i].id+"-"+e,
 								'type': 'text',
+<<<<<<< HEAD
 								'placeholder':'Hoja #'+e+' valor: '+Hojas[e].porcentaje+' %',
+=======
+								'placeholder':Hojas[e].nombre+' [valor: '+Hojas[e].porcentaje+' %]',
+>>>>>>> ade11761801940b1bd859e0d0dadcefc10115596
 								'class': Hojas[e].porcentaje
 								});
 								$( FORM ).append($(INPUT).clone());

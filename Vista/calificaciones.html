@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="./www/css/estilosAlumno.css">
 	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/redmond/jquery-ui.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -51,51 +52,67 @@
 						</div>
 					</div><!-- /navbar-inner -->
 				</div>
+				<!--INICIO-->
 				<section>
 					<div class="buscador">
 					<!--No esta dentro de un form porque se pretende buscar dinamicamente-->
-						<label for="buscar"><i class="icon-search"></i>Buscar Curso</label>
+						<label for="buscar"><i class="icon-search"></i>Buscar </label>
 						<input type="search" id="buscar" name="buscar" />
 					</div>
 					<div class="contenedor">
-						<table >
-							<caption>
-								Ejemplo de curso 1
-							</caption>
-							<thead>
-								<tr>
-									<th>Actividad</th>
-									<th>Evaluacion</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Practica 1</td>
-									<td>7.5</td>
-								<tr>
-								<tr>
-									<td>Practica 2</td>
-									<td>10</td>
-								<tr>
-								<tr>
-									<td>Tareas</td>
-									<td>25</td>
-								<tr>
-								<tr>
-									<td>Exposicion</td>
-									<td>5</td>
-								<tr>
-								<tr>
-									<td>Departamental</td>
-									<td>6</td>
-								<tr>
+						<div class="resultado">
+							<table class="bordered">
+								<thead>
+									<tr>
+										<th >Ciclo</th>
+										<th >NombreCurso</th>
+										<th >Academia</th>
+										<th >NRC</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td onClick="desplegar(numero)" colspan="4">
+											<p id="mostrar_ocultar" class="puntero">Mostrar Actividades</p>
+										</td>
+									</tr>
+								</tbody>
+								<tbody id="contenido" style="display:none;">
+									<form action="index.php?ctl=Profesor&act=configurarCurso" method="post">
+										<tr id="idCURSO" style="display:" class="idAct">
 
-							</tbody>
-						</table>
+											<td>
+												<p>Actividad</p>
+											</td>
+											<td>
+												<p>Porcentaje</p>
+											</td>
+											<td >
+												<p>Calificacion</p>
+											</td>
+											<td >
+												<button class="btn btn-info btn-mini mostrarHoja"  id="idAct" type="submit">Mostrar hoja evaluacion</button>
+											</td>
+										</tr >
+
+										
+										<tr id="fin">
+											<!-- input  oculto para el buscador-->
+											<input type="hidden" value="idCurso" name="curso">
+										</tr>
+										
+									</form>
+								</tbody>
+							</table>
+						</div>
+					</div id="fin">					
+					</form>
+						
 					</div>
 				</section>
+				<!--FIN-->
 				<footer>
-					<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usuario-</p>
+					<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usuario</p>
 				</footer>
 			</div>
 		</div>
@@ -104,6 +121,15 @@
 	<script type="text/javascript" src="./www/js/jquery.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<!--INICIO-->
+	<script type="text/javascript" src="./www/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="./www/js/buscador.js"></script>
+	<script type="text/javascript" src="./www/js/desplegar.js"></script>
+	<script type="text/javascript" src="./www/js/Ajax.js"></script>
+	<script type="text/javascript" src="./www/js/mostrarHojaEvaluacion.js"></script>
+	<script type="text/javascript" src="./www/js/validaConfigurarCurso.js"></script>
+	<script type="text/javascript" src="./www/js/validaHojaEvaluacion.js"></script>
+	<!--FIN-->
 	
 </body>
 </html>
