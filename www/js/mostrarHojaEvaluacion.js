@@ -18,7 +18,7 @@ jQuery(document).ready(function($){
 				
 				var json = eval(miajax.responseText);
 				for( i in json){
-					$( DIALOG ).append('<label for"'+(parseInt(i)+1)+'">Porcentaje Rublo '+(parseInt(i)+1)+'</label><input type="text" value="'+json[i].porcentaje+'" disabled="true">');
+					$( DIALOG ).append('<label for"'+(parseInt(i)+1)+'"> '+json[i].nombre+'</label><input type="text" value="'+json[i].porcentaje+'" disabled="true">');
 					
 				}
 

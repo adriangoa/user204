@@ -58,10 +58,7 @@ jQuery(document).ready(function($){
 		if(sinError)
 		{
 			//se envia el formulario
-<<<<<<< HEAD
-=======
 			alert()
->>>>>>> ade11761801940b1bd859e0d0dadcefc10115596
 			
 		}
 

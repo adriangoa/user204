@@ -26,7 +26,6 @@ jQuery(document).ready(function($){
 		$("#cursosBase option").remove();
 		//se cargan los cursos en base al ciclo
 		$.ajax({ 
-
 		    url: "index.php?ctl=Profesor&act=regresarCursos&ciclo="+$(this).val()+"",
 		    error: function(data) {
 		               		 },

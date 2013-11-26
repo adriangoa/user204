@@ -222,14 +222,15 @@ class ProfesorMdl
 			    }
 	}
 
-	function agregarHojaExtra($actividad,$cantidad,$porcentajes,$idCurso)
+	function agregarHojaExtra($actividad,$cantidad,$nombres,$porcentajes,$idCurso)
 	{
 		for($i = 0; $i<$cantidad; $i++)
 		{
 			$query = 
 				"INSERT INTO hojasextras
-				(porcentaje, id_actividad, id_curso)
+				(nombre,porcentaje, id_actividad, id_curso)
 				VALUES (
+					'".$nombres[$i]."',
 					'".$porcentajes[$i]."',
 					'".$actividad."',
 					'".$idCurso."'
@@ -642,11 +643,10 @@ class ProfesorMdl
 				'$nrc',
 				'$academia'
 				)";
-		$resultado = $this -> driver->query($consulta);
 
-		//se obtiene el id del curso recien insertado
-		$idCursoClonado = $resultado->insert_id;
-		echo $idCursoClonado;
+        mysqli_query($this -> driver, $consulta);
+        $idCursoClonado = mysqli_insert_id($this -> driver);
+
 		//se clonan los horarios
 		$horariosBase = $this->obtenerHorarios($idCurso);
 
@@ -662,6 +662,41 @@ class ProfesorMdl
 			$resultado = $this -> driver->query($consulta);
 
 		}
+
+		//se clonan las actividades
+		$actividadesBase = $this->obtenerActividades($idCurso);
+		if($actividadesBase)
+		{
+				foreach ($actividadesBase as  $actividadBase) {
+				$consulta = 
+				"INSERT INTO actividades (actividad,porcentaje, idCurso) 
+				VALUES (
+					'".$actividadBase['actividad']."',
+					'".$actividadBase["porcentaje"]."',
+					'".$idCursoClonado."'
+					)";
+				mysqli_query($this -> driver, $consulta);
+	        	$idActividadClonada = mysqli_insert_id($this -> driver);
+
+	        	//se checa si esa actividad tiene hojas extras
+	        	$hojasBase = $this->obtenerHojasExtras($actividadBase['id']);
+	        	if($hojasBase!=FALSE)
+	        	{
+	        		foreach ($hojasBase as $hojaBase) {
+	        			$consulta = 
+						"INSERT INTO hojasextras (porcentaje,id_actividad, id_curso) 
+						VALUES (
+							'".$hojaBase['porcentaje']."',
+							'".$idActividadClonada."',
+							'".$idCursoClonado."'
+							)";
+						mysqli_query($this -> driver, $consulta);
+	        		}
+	        	}//fin if hojasBase
+			}//fin foreach actividadesBase
+
+		}
+		
 	}
 }
 

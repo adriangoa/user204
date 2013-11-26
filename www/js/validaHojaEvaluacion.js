@@ -30,6 +30,8 @@ jQuery(document).ready(function($){
      	return false;
 	});
 
+
+//se genera el formulario para agregar calificaciones a las hojas
 	$(".generar").click(function (e){
 
 
@@ -51,6 +53,14 @@ jQuery(document).ready(function($){
 			//se generan los input de acuerdo al total
 			for(var i =0; i<cantidad; i++)
 			{
+
+				$(INPUT).attr({
+						'type': 'text',
+						'class':'nombrePorcentaje',
+						'placeholder': 'Nombre',
+						'name':"nombre"+i,
+						});
+				$("#contenedor-inputs").append($(INPUT).clone());
 
 				$(INPUT).attr({
 						'type': 'text',
@@ -119,10 +129,14 @@ jQuery(document).ready(function($){
 		   	else
 		   		porcentajeActual+=parseInt($(this).val());
 		});
+		$('.nombrePorcentaje').each(function(){
+		   if(($(this).val()==""))
+		   		sinError=false;
+		});
 
 		if(sinError==false)
 		{
-			$(DIV).text("Ingresa un valor numerico valido en todos los campos")
+			$(DIV).text("Ingresa un valor numerico valido en todos los campos de porentaje y nombres correspondientes")
 					.addClass("error")
 					.css('display', 'block')
 			    	.clone().insertAfter($("#contenedor-inputs"));

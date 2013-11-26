@@ -143,7 +143,7 @@ class ProfesorCtl
 					$url2 = substr($url1, $pos2);
 					$filaActividad = str_replace($url2, '', $url1);
 					//Genero los resultados segun los cursos
-					$cursos = $this -> modelo -> obtenerCurso();
+					$cursos = $this -> modelo -> obtenerCursos();
 					
 					if($cursos==FALSE)
 						{
@@ -248,7 +248,7 @@ class ProfesorCtl
 						$url2 = substr($url1, $pos2);
 						$filaActividad = str_replace($url2, '', $url1);
 						//Genero los resultados segun los cursos
-						$cursos = $this -> modelo -> obtenerCurso();
+						$cursos = $this -> modelo -> obtenerCursos();
 						
 
 						
@@ -335,7 +335,7 @@ class ProfesorCtl
 					$url2 = substr($url1, $pos2);
 					$filaActividad = str_replace($url2, '', $url1);
 					//Genero los resultados segun los cursos
-					$cursos = $this -> modelo -> obtenerCurso();
+					$cursos = $this -> modelo -> obtenerCursos();
 
 					
 					if($cursos==FALSE)
@@ -491,7 +491,7 @@ class ProfesorCtl
 
 
 					//Genero los resultados segun los cursos
-					$cursos = $this -> modelo -> obtenerCurso();
+					$cursos = $this -> modelo -> obtenerCursos();
 					
 					if($cursos==FALSE)
 						{
@@ -693,7 +693,7 @@ class ProfesorCtl
 
 
 					//Genero los resultados segun los cursos
-					$cursos = $this -> modelo -> obtenerCurso();
+					$cursos = $this -> modelo -> obtenerCursos();
 					
 					if($cursos==FALSE)
 						{
@@ -936,7 +936,7 @@ class ProfesorCtl
 
 
 					//Genero los resultados segun los cursos
-					$cursos = $this -> modelo -> obtenerCurso();
+					$cursos = $this -> modelo -> obtenerCursos();
 					if($cursos==FALSE)
 					{
 						//No hay cursos creados aun
@@ -1017,7 +1017,7 @@ class ProfesorCtl
 
 
 						//Genero los resultados segun los cursos
-						$cursos = $this -> modelo -> obtenerCurso();
+						$cursos = $this -> modelo -> obtenerCursos();
 						foreach ($cursos as $row) 
 						{
 
@@ -1084,12 +1084,17 @@ class ProfesorCtl
 					$actividad = $_POST["actividad"];
 					$idCurso = $_POST["id-curso"];
 					$porcentajes= array();
+					$nombres=array();
 					//arreglo para guardar los porcentajes
 					for ($i=0; $i <$cantidad ; $i++) { 
 						array_push($porcentajes,$_POST["porcentaje".$i]);
 					}
 
-					$resultado = $this -> modelo -> agregarHojaExtra($actividad,$cantidad,$porcentajes,$idCurso);
+					for ($i=0; $i <$cantidad ; $i++) { 
+						array_push($nombres,$_POST["nombre".$i]);
+					}
+
+					$resultado = $this -> modelo -> agregarHojaExtra($actividad,$cantidad,$nombres,$porcentajes,$idCurso);
 					
 					if($resultado!==FALSE)
 					{
@@ -1199,6 +1204,7 @@ class ProfesorCtl
 				$cursos = $this -> modelo -> obtenerCursoXCiclo($ciclo);
 				if($cursos!==FALSE)
 					{
+
 						echo json_encode($cursos);
 					}
 			break;
