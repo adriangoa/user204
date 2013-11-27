@@ -5,6 +5,9 @@ class AdministradorCtl
 	public $modelo;
 	public function ejecutar()
 	{
+		session_start();
+		if($_SESSION['tipo']!=0)
+			header("Location: /user204/index.php");
 		require_once("Modelo/AdministradorMdl.php");
 		$this->modelo = new AdministradorMdl();
 		switch ($_GET['act'])
@@ -61,7 +64,20 @@ class AdministradorCtl
 				{
 
 				}
+				break;
+
+			case "regresarMenu":
+				$menu = file_get_contents("Vista/menuAdministrador.html");
+				if(isset($_SESSION['nombre']))
+					$menu = str_replace("[USUARIO]", $_SESSION['nombre'], $menu);
+				else
+					$menu = str_replace("[USUARIO]", "Hacker", $menu);
+
+				echo $menu;
+			break;
+
 			default:
+
 			 	require_once("Vista/InicioAdministrador.html");
 
 

@@ -25,7 +25,6 @@ class AlumnoMdl
 
 	function obtenerCursos()
 	{
-		session_start();
 		
 		$codigo=$_SESSION['usuario'];
 

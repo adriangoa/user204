@@ -5,6 +5,9 @@ class ProfesorCtl
 	public $modelo;
 	public function ejecutar()
 	{
+		session_start();
+		if($_SESSION['tipo']!=1)
+			header("Location: /user204/index.php");
 		require_once("Modelo/ProfesorMdl.php");
 		
 		$this->modelo = new ProfesorMdl();
@@ -1208,6 +1211,17 @@ class ProfesorCtl
 						echo json_encode($cursos);
 					}
 			break;
+
+			case "regresarMenu":
+				$menu = file_get_contents("Vista/menuProfesor.html");
+				if(isset($_SESSION['nombre']))
+					$menu = str_replace("[USUARIO]", $_SESSION['nombre'], $menu);
+				else
+					$menu = str_replace("[USUARIO]", "Hacker", $menu);
+
+				echo $menu;
+			break;
+
 
 			default:
 			 	require_once("Vista/InicioProfesor.html");

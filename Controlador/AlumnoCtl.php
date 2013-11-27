@@ -6,6 +6,10 @@ class AlumnoCtl
 
 	public function ejecutar()
 	{
+
+		session_start();
+		if($_SESSION['tipo']!=2)
+			header("Location: /user204/index.php");
 		require_once("Modelo/AlumnoMdl.php");
 
 		$this->modelo = new AlumnoMdl();
@@ -348,6 +352,16 @@ class AlumnoCtl
 					echo $vista;
 				}
 				break;
+
+				case "regresarMenu":
+				$menu = file_get_contents("Vista/menuAlumno.html");
+				if(isset($_SESSION['nombre']))
+					$menu = str_replace("[USUARIO]", $_SESSION['nombre'], $menu);
+				else
+					$menu = str_replace("[USUARIO]", "Hacker", $menu);
+
+				echo $menu;
+			break;
 
 			default:
 			 	require_once("Vista/InicioAlumno.html");
