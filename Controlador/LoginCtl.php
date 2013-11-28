@@ -26,14 +26,13 @@ class LoginCtl
 
 					$usuario 	= $_POST["usuario"];
 					$correo 	= $_POST["correo"];
-				$resultado=$this-> modelo-> recuperar($usuario,$correo);
-				if($resultado==FALSE)
-					echo("ERROR");
-				else
-				{
-					echo "Una nueva contraseña fue enviada a $correo";
-					require("Vista/recuperarContrasenia.html");
-				}
+					$resultado=$this-> modelo-> recuperar($usuario,$correo);
+					if($resultado==FALSE)
+						echo("ERROR");
+					else
+					{
+						require("Vista/recuperarContrasenia.html");
+					}
 				}
 			break;
 

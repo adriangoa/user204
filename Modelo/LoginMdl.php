@@ -44,30 +44,59 @@ class LoginMdl
 		$cifrada= sha1($password);
 
 		//Primero se busca en la tabla de usuarios
-		$query = "UPDATE alumnos SET password=\"$cifrada\" WHERE codigo =\"$usuario\" AND correo=\"$correo\"";
-		$r = $this -> driver -> query($query);//regresa un objeto
-		var_dump($r);
-		if($r==FALSE)
+		$seleciona ="SELECT * FROM alumnos WHERE codigo='".$usuario."' AND correo='".$correo."'";
+		$resultado =$this -> driver -> query($seleciona);
+		if($resultado->num_rows>0)
 			{
-
-				//Luego se busca en la de profesores
-				$query2 = "UPDATE profesores SET password=\"$cifrada\" WHERE codigo =\"$usuario\" AND correo=\"$correo\"";
-				$r = $this -> driver -> query($query2);
-				if($r==FALSE)
-				{
-					//Por ultimo se busca en la de administradores
-					$query3 = "UPDATE administradores SET password=\"$cifrada\" WHERE codigo =\"$usuario\" AND correo=\"$correo\"";
-					$r = $this -> driver -> query($query3);
-				}
+				
+				$query = "UPDATE alumnos SET password=\"$cifrada\" WHERE codigo =\"$usuario\" AND correo=\"$correo\"";
+				$r = $this -> driver -> query($query);
+				if($r === FALSE)
+					return FALSE;
 			}
-		if($r==TRUE)
-			$this -> enviarCorreo($correo,$password);
-		return $r;
+		else
+		{
+			//se busca en profesores
+			$seleciona ="SELECT * FROM profesores WHERE codigo='".$usuario."' AND correo='".$correo."'";
+			$resultado =$this -> driver -> query($seleciona);
+			if($resultado->num_rows>0)
+				{
+					
+					$query = "UPDATE profesores SET password=\"$cifrada\" WHERE codigo =\"$usuario\" AND correo=\"$correo\"";
+					$r = $this -> driver -> query($query);
+					if($r === FALSE)
+						return FALSE;
+				}
+			else
+			{
+				//se busca en administradores
+				$seleciona ="SELECT * FROM administradores WHERE codigo='".$usuario."' AND correo='".$correo."'";
+				$resultado =$this -> driver -> query($seleciona);
+				if($resultado->num_rows>0)
+					{
+						
+						$query = "UPDATE administradores SET password=\"$cifrada\" WHERE codigo =\"$usuario\" AND correo=\"$correo\"";
+						$r = $this -> driver -> query($query);
+						if($r === FALSE)
+							return FALSE;
+					}
+			}
+		}
 
+		if(isset($r))
+		{
+			
+			$usuario =$resultado->fetch_assoc();
+			$this -> enviarCorreoRecuperar($correo,$password,$usuario['codigo']);
+			return $r;
+		}
+		else
+			return FALSE;
+			
 		
 	}
 
-	function enviarCorreo($correo,$clave)
+	function enviarCorreoRecuperar($correo,$clave,$codigo)
 	{
 			$mail = new PHPMailer();
 			
@@ -81,24 +110,24 @@ class LoginMdl
 			$mail->Username = "cc409user204@gmail.com";
 			$mail->Password = "cucei204";
 			$mail->SetFrom($correo);
-			$mail->Subject = "Bienvenido";
+			$mail->Subject = "Recuperacion de contrase&ntilde;a";
 			$mail->Body = '
 					<div id="contenedor" style="background-color: #FFFFFF;text-align: center;">
 
-						<div style="background-color:#32AABB; width:100%; height:40px; text-align:center;"><h1 style="color:white; font-weight:bold;">Bienvenido</h1></div>
+						<div style="background-color:#32AABB; width:100%; height:40px; text-align:center;"><h1 style="color:white; font-weight:bold;">Contraseña restablecida</h1></div>
 						<div style="text-align: center">
 							<p style="font-size: 18px; color:gray;">
-							Para hacer uso de tu cuenta ingresa el siguiente codigo de verificacion:
+							Tu constraseña ha sido cambiada:
 							</p><br />
 							
-							<a href="http://localhost/user204/"><input type="button" value="Verificar" style="border:1px solid #CED5D7;box-shadow: 0 0 0 3px #EEF5F7;padding: 8px 16px 8px 16px;border-radius: 5px;font-weight: bold;color:black;"></a>
+							
 						</div>
 						<div style="text-align: center">
 							<h2>Datos de acceso</h2>
 							<br />
 								<div style="text-align: center">
-								<span style="font-weight:bold;font-size: 17px;">Usuario:</span> '.$correo.'
-								<br />
+								<span style="font-weight:bold;font-size: 17px;">Usuario:</span> '.$codigo.'
+								<br/>
 								<span style="font-weight:bold;font-size: 17px;">Contrase&ntilde;a:</span> '.$clave.'
 							</div>
 						</div>
@@ -121,9 +150,21 @@ class LoginMdl
 		$r = $this -> driver -> query($query);//regresa un objeto
 		if($r->num_rows==0)
 			{
-				return FALSE;
+				//se busa en  profesores
+				$query = "SELECT * FROM profesores WHERE codigo =\"$codigo\" AND correo=\"$correo\"";
+				$r = $this -> driver -> query($query);//regresa un objeto
+				if($r->num_rows==0)
+				{
+					//se busa en  profesores
+					$query = "SELECT * FROM administradores WHERE codigo =\"$codigo\" AND correo=\"$correo\"";
+					$r = $this -> driver -> query($query);//regresa un objeto
+					if($r->num_rows==0)
+						return FALSE;
+				}
+
+				
 			}
-		else
+		if($r->num_rows!=0)
 			return TRUE;
 	}
 

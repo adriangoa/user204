@@ -69,20 +69,31 @@ jQuery(document).ready(function($){
 						.addClass("error")
 						.css("display","block")
 				    	.clone().insertAfter($("#correo"))
-				    }
+				    
 				}
+				else
+				{
+					if(sinError==false)
+					{
+						$(error).text(mensaje)
+								.addClass("error")
+								.css("display","block")
+						    	.clone().insertAfter($("#correo"))
+					}
+					else
+						$( "#formularioRecuperar" ).submit();
+				}
+			}
 		 	});
 		}
-
-		//se regresa los mensajes de error si es que los hay
-		if(sinError==false && ajax==false)
-		{
-			$(error).text(mensaje)
-					.addClass("error")
-					.css("display","block")
-			    	.clone().insertAfter($("#correo"))
-		}
 		
+		if(sinError==false)
+			{
+				$(error).text(mensaje)
+						.addClass("error")
+						.css("display","block")
+						.clone().insertAfter($("#correo"))
+			}
 
 		return false;
 	});

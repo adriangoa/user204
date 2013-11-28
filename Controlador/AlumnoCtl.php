@@ -114,18 +114,25 @@ class AlumnoCtl
 										$new_filaActividad = str_replace("Actividad", $raw['actividad'], $new_filaActividad);
 										$new_filaActividad = str_replace("idAct", $raw['id'], $new_filaActividad);
 										$new_filaActividad = str_replace("Porcentaje", $raw['porcentaje']."%", $new_filaActividad);
-
-										foreach ($calificaciones_actividades as $calificacion) {
-											if($calificacion['id_curso']==$curso['id'] and 
-											$calificacion['id_actividad']==$raw['id'])
-											{
-												$new_filaActividad = str_replace("Calificacion",$calificacion['calificacion']." pts",$new_filaActividad);
-												break;
-											}
-											else{
-												$new_filaActividad = str_replace("Calificacion","N\A",$new_filaActividad);												
+										if($calificaciones_actividades!=FALSE)
+										{
+											foreach ($calificaciones_actividades as $calificacion) {
+												if($calificacion['id_curso']==$curso['id'] and 
+												$calificacion['id_actividad']==$raw['id'])
+												{
+													$new_filaActividad = str_replace("Calificacion",$calificacion['calificacion']." pts",$new_filaActividad);
+													break;
+												}
+												else{
+													$new_filaActividad = str_replace("Calificacion","N\A",$new_filaActividad);												
+												}
 											}
 										}
+										else
+										{
+											$new_filaActividad = str_replace("Calificacion","N\A",$new_filaActividad);
+										}
+										
 
 										if(isset($filasActividad))
 										   $filasActividad .= $new_filaActividad;

@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Sistema de calificaciones en linea</title>
 	<link rel="stylesheet" href="./www/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap.css">
 </head>
 <body>
 	<header>
@@ -15,9 +16,9 @@
 	<section>
 		<div class="contenedor">
 			<div id="cuadro_formulario">
-				<form action="index.php?ctl=Login&act=Recuperar" method="post">
+				<form action="index.php?ctl=Login&act=Recuperar" method="post" id="formularioRecuperar">
 					<div id="campos_entrada">
-						<label for="usuario">Usuario:</label>
+						<label for="usuario">Codigo:</label>
 						<input type="text" name="usuario" id="usuario"><br>
 						<label for="password">Correo:</label>
 						<input type="text" name="correo" id="correo">
@@ -25,12 +26,15 @@
 					</div>
 					<div id="botones_formulario">
 						<input type="reset" value="Limpiar" class="boton">
-						<button type="submit" class="boton enviar">Enviar</button>
+						<button type="submit" class="boton enviar">Recuperar</button>
 					</div>
 				</form>
 			</div>
 			<br>
-			<a href="index.php?ctl=Login&act=Login">Iniciar sesion</a>
+			<a href="index.php?ctl=Login&act=Login">
+				<button class="btn btn-success" type="submit">Iniciar sesion</button>
+			</a>
+
 									
 								
 		</div>
