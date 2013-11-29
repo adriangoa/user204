@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2013 a las 01:03:13
--- Versión del servidor: 5.5.32
--- Versión de PHP: 5.4.16
+-- Servidor: localhost
+-- Tiempo de generación: 14-11-2013 a las 07:32:01
+-- Versión del servidor: 5.1.41
+-- Versión de PHP: 5.3.1
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,8 +18,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cc409_user204`
 --
-CREATE DATABASE IF NOT EXISTS `cc409_user204` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `cc409_user204`;
 
 -- --------------------------------------------------------
 
@@ -34,16 +31,15 @@ CREATE TABLE IF NOT EXISTS `actividades` (
   `porcentaje` int(100) NOT NULL,
   `idCurso` int(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `actividades`
+-- Volcar la base de datos para la tabla `actividades`
 --
 
 INSERT INTO `actividades` (`id`, `actividad`, `porcentaje`, `idCurso`) VALUES
 (1, 'Examen', 30, 1),
-(2, 'Tareas', 20, 1),
-(3, '', 0, 0);
+(2, 'Tareas', 20, 1);
 
 -- --------------------------------------------------------
 
@@ -57,16 +53,15 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   `password` varchar(100) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `tipo` int(5) NOT NULL,
-  `correo` varchar(100) NOT NULL,
   PRIMARY KEY (`id_administrador`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `administradores`
+-- Volcar la base de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`id_administrador`, `codigo`, `password`, `nombre`, `tipo`, `correo`) VALUES
-(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'God', 0, 'admin@admin.com');
+INSERT INTO `administradores` (`id_administrador`, `codigo`, `password`, `nombre`, `tipo`) VALUES
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'God', 0);
 
 -- --------------------------------------------------------
 
@@ -90,12 +85,12 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `alumnos`
+-- Volcar la base de datos para la tabla `alumnos`
 --
 
 INSERT INTO `alumnos` (`id_alumno`, `codigo`, `password`, `nombre`, `apellidos`, `carrera`, `correo`, `celular`, `github`, `web`, `tipo`) VALUES
 (1, 'alumno', '684b10ab8da41b83690bd96f9a846b9814d8a288', 'AlumnoPro', 'Probetin', 'Ingenieria en computacion', 'alumno@alumno.com', NULL, NULL, NULL, 2),
-(4, '210681391', 'f6e7069f24d383306e1249f4abac74f82a9fdc39', 'Adrian', 'Vazquez Esparza', 'computacion', 'adrianvazuquez@gmail.com', '3314986623', '', '', 2);
+(4, '210681391', 'd162826367decfb3a6b3196b41a5bc3780b4c9fe', 'Adrian', 'Vazquez Esparza', 'computacion', 'adrianvazuquez@gmail.com', '3314986623', '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -111,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `alumnos_cursos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `alumnos_cursos`
+-- Volcar la base de datos para la tabla `alumnos_cursos`
 --
 
 INSERT INTO `alumnos_cursos` (`id`, `id_alumno`, `id_curso`) VALUES
@@ -134,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `asistencias` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
 
 --
--- Volcado de datos para la tabla `asistencias`
+-- Volcar la base de datos para la tabla `asistencias`
 --
 
 INSERT INTO `asistencias` (`id`, `id_alumno`, `id_curso`, `fecha`, `asistencia`) VALUES
@@ -145,7 +140,7 @@ INSERT INTO `asistencias` (`id`, `id_alumno`, `id_curso`, `fecha`, `asistencia`)
 (5, 1, 1, '2013-10-16', 1),
 (6, 1, 1, '2013-10-21', 1),
 (7, 1, 1, '2013-10-23', 0),
-(8, 1, 1, '2013-10-28', 0),
+(8, 1, 1, '2013-10-28', 1),
 (9, 1, 1, '2013-10-30', 0),
 (10, 1, 1, '2013-11-04', 0),
 (11, 1, 1, '2013-11-06', 0),
@@ -172,7 +167,7 @@ INSERT INTO `asistencias` (`id`, `id_alumno`, `id_curso`, `fecha`, `asistencia`)
 (32, 4, 1, '2013-10-16', 0),
 (33, 4, 1, '2013-10-21', 0),
 (34, 4, 1, '2013-10-23', 1),
-(35, 4, 1, '2013-10-28', 1),
+(35, 4, 1, '2013-10-28', 0),
 (36, 4, 1, '2013-10-30', 0),
 (37, 4, 1, '2013-11-04', 0),
 (38, 4, 1, '2013-11-06', 0),
@@ -210,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `calificaciones_actividades` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `calificaciones_actividades`
+-- Volcar la base de datos para la tabla `calificaciones_actividades`
 --
 
 INSERT INTO `calificaciones_actividades` (`id`, `id_alumno`, `id_actividad`, `nombre_actividad`, `calificacion`, `id_curso`) VALUES
@@ -234,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `calificaciones_hojas` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `calificaciones_hojas`
+-- Volcar la base de datos para la tabla `calificaciones_hojas`
 --
 
 INSERT INTO `calificaciones_hojas` (`id`, `id_alumno`, `id_hoja`, `calificacion`, `id_curso`, `id_actividad`) VALUES
@@ -256,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `ciclos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `ciclos`
+-- Volcar la base de datos para la tabla `ciclos`
 --
 
 INSERT INTO `ciclos` (`id`, `ciclo`, `fechaInicio`, `fechaFinalizacion`) VALUES
@@ -277,15 +272,17 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   `nrc` int(10) NOT NULL,
   `academia` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `cursos`
+-- Volcar la base de datos para la tabla `cursos`
 --
 
 INSERT INTO `cursos` (`id`, `ciclo`, `nombre`, `seccion`, `nrc`, `academia`) VALUES
 (1, '2013A', 'Matematicas', 'd05', 87746, 'cienciasBasicas'),
-(2, '2013A', 'Fisica', 'd33', 56465, 'cienciasBasicas');
+(2, '2013A', 'Fisica', 'd33', 56465, 'cienciasBasicas'),
+(4, '2013B', 'Matematicas', 'd05', 87746, 'cienciasBasicas'),
+(5, '2013B', 'Matematicas', 'd05', 87746, 'cienciasBasicas');
 
 -- --------------------------------------------------------
 
@@ -300,6 +297,11 @@ CREATE TABLE IF NOT EXISTS `diasnoefectivos` (
   `motivo` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `diasnoefectivos`
+--
+
 
 -- --------------------------------------------------------
 
@@ -316,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `hojasextras` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `hojasextras`
+-- Volcar la base de datos para la tabla `hojasextras`
 --
 
 INSERT INTO `hojasextras` (`id`, `porcentaje`, `id_actividad`, `id_curso`) VALUES
@@ -336,23 +338,20 @@ CREATE TABLE IF NOT EXISTS `horarios` (
   `horaFin` time NOT NULL,
   `dia` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
--- Volcado de datos para la tabla `horarios`
+-- Volcar la base de datos para la tabla `horarios`
 --
 
 INSERT INTO `horarios` (`id`, `idCurso`, `horaInicio`, `horaFin`, `dia`) VALUES
 (5, 1, '07:00:00', '09:00:00', 'Lunes'),
 (6, 1, '07:00:00', '09:00:00', 'Miercoles'),
 (7, 2, '08:00:00', '10:00:00', 'Sabado'),
-(8, 3, '07:00:00', '09:00:00', 'Martes'),
-(9, 4, '07:00:00', '08:00:00', 'Lunes'),
-(10, 5, '07:00:00', '09:00:00', 'Lunes'),
-(11, 6, '07:00:00', '09:00:00', 'Lunes'),
-(12, 7, '07:00:00', '08:00:00', 'Lunes'),
-(13, 8, '07:00:00', '08:00:00', 'Lunes'),
-(14, 9, '07:00:00', '08:00:00', 'Lunes');
+(15, 0, '07:00:00', '09:00:00', 'Lunes'),
+(16, 0, '07:00:00', '09:00:00', 'Miercoles'),
+(17, 0, '07:00:00', '09:00:00', 'Lunes'),
+(18, 0, '07:00:00', '09:00:00', 'Miercoles');
 
 -- --------------------------------------------------------
 
@@ -365,22 +364,16 @@ CREATE TABLE IF NOT EXISTS `profesores` (
   `codigo` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
   `nombre` varchar(30) NOT NULL,
-  `apellidos` varchar(100) NOT NULL,
   `tipo` int(5) NOT NULL,
-  `correo` varchar(100) NOT NULL,
   PRIMARY KEY (`id_profesor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `profesores`
+-- Volcar la base de datos para la tabla `profesores`
 --
 
-INSERT INTO `profesores` (`id_profesor`, `codigo`, `password`, `nombre`, `apellidos`, `tipo`, `correo`) VALUES
-(1, 'profesor', 'aabb211b66e86d825aaec57dd03bd285590da669', 'ProfesorUltra', '', 1, 'profesor@profesor'),
-(2, '2121', 'ed6b0810c1c1763e1c982704aa6f648ed05d7b6a', 'maistro', 'maistro', 1, 'adrianvazuquez@gmail.com'),
-(3, '210210', '987965273694b22fb091fcc75201558da1d57da0', 'Adrian', '', 1, 'adrianvazuquez@gmail.com'),
-(4, '6565', 'ca6da516adaef5ff87b4b2a985d4a3a184f0bdf5', 'profe', '', 1, 'adrianvazuquez@gmail.com'),
-(5, '210', '4c4bd1d96920376ea5a9fbfaf5bc86cad4ffb383', 'ADFS', 'AA', 1, 'adrianvazuquez@gmail.com');
+INSERT INTO `profesores` (`id_profesor`, `codigo`, `password`, `nombre`, `tipo`) VALUES
+(1, 'profesor', 'aabb211b66e86d825aaec57dd03bd285590da669', 'ProfesorUltra', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

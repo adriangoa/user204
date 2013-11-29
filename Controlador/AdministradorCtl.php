@@ -75,13 +75,14 @@ class AdministradorCtl
 					
 					if($resultado!==FALSE)
 					{
-						
-						require_once("Vista/agregarProfesor.html");
+						echo "0";
+						//require_once("Vista/agregarProfesor.html");
 						
 					}
 					else
 					{
-						echo "error";
+						echo "1";
+						//echo "error";
 					}
 				}
 				break;

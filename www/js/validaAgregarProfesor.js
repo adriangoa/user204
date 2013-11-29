@@ -112,7 +112,51 @@ jQuery(document).ready(function($){
 			}
 
 		}
-		return sinError;
+
+		///////////////////////////////////////////////////////////////
+		if(sinError)
+		{
+		//Serializar y Agregar
+			var datos=$("#formulario").serialize();
+			$.ajax({
+					type:'POST',
+				url: $('#baseurl').text()+"/user204/index.php?ctl=Administrador&act=AgregarProfesor",
+				error: function(data) {
+					apprise('Ocurrio un error. Intenta otra vez.');
+					},
+					data:datos,
+					beforeSend: function(){
+			                $.blockUI({
+			                    message:'<img style=\"width:400px;\" src=\"./www/img/cargando.gif\">',
+			                    css: { 
+			                        top:  ($(window).height() - 160) /2 + 'px', 
+			                        left: ($(window).width() - 200) /2 + 'px', 
+			                        width: '200' 
+			                    },
+
+			                });
+			                setTimeout($.unblockUI,4000);
+			            },
+								success: function(data) {
+						if(data==0)//si no hay error
+						{
+							apprise('Elemento Agregado', {'textOk':'Aceptar'}, function(r)
+							{
+								if(r)
+								{
+									location.reload();
+								}
+							});
+						}
+						else
+						{
+							apprise('Ocurrio un error. Intenta otra vez.');
+						}
+					}
+				});
+		}
+		///////////////////////////////////////////////////////////////
+		return false;
 
 	});
 
