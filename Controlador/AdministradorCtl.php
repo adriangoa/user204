@@ -49,11 +49,13 @@ class AdministradorCtl
 
 					if($resultado!==FALSE)
 					{
-						require_once("Vista/agregarCiclo.html");
+						echo "0";
+						//require_once("Vista/agregarCiclo.html");
 					}
 					else
 					{
-						echo "error";
+						echo "1";
+						//echo "error";
 					}
 				}
 				break;

@@ -129,16 +129,60 @@ jQuery(document).ready(function($){
 				var cicloPrincipal=parseInt(ciclo.substr(0,4));
 				
 				var cicloIngresado=parseInt($( "#fecha-no-efectivo"+i ).val().substr(0,4));
-				if(cicloIngresado<cicloPrincipal || cicloIngresado>cicloPrincipal+1)
+				/*if(cicloIngresado<cicloPrincipal || cicloIngresado>cicloPrincipal+1)
 				{
 					$(DIV).text("La fecha ingresada no corresponde al ciclo")
 						.addClass("error")
 				    	.clone().insertAfter($("#div-dia-no-efectivo"+i));
 					sinError= false;
-				}
+				}*/
 			}
 	  	}
-		return sinError;
+
+	  	//////////////////////////////////////////////////////////////
+		if(sinError)
+		{
+		//Serializar y Agregar
+			var datos=$("#formulario").serialize();
+			$.ajax({
+					type:'POST',
+				url: $('#baseurl').text()+"/user204/index.php?ctl=Administrador&act=agregarCiclo",
+				error: function(data) {
+					apprise('Ocurrio un error. Intenta otra vez.');
+					},
+					data:datos,
+					beforeSend: function(){
+			                $.blockUI({
+			                    message:'<img style=\"width:400px;\" src=\"./www/img/cargando.gif\">',
+			                    css: { 
+			                        top:  ($(window).height() - 160) /2 + 'px', 
+			                        left: ($(window).width() - 200) /2 + 'px', 
+			                        width: '200' 
+			                    },
+
+			                });
+			                setTimeout($.unblockUI,4000);
+			            },
+								success: function(data) {
+						if(data==0)//si no hay error
+						{
+							apprise('Cliclo Agregado', {'textOk':'Aceptar'}, function(r)
+							{
+								if(r)
+								{
+									location.reload();
+								}
+							});
+						}
+						else
+						{
+							apprise('Ocurrio un error. Intenta otra vez.');
+						}
+					}
+				});
+		}
+		///////////////////////////////////////////////////////////////
+		return false;
 
 		
 	});
@@ -165,8 +209,6 @@ jQuery(document).ready(function($){
 		  .attr('id', "div-dia-no-efectivo"+nuevaPosicion)
 		  .addClass("no-efectivo")
 		  .clone().insertAfter("#div-dia-no-efectivo"+(nuevaPosicion-1));
-
-  	
   	return false;
   });
 

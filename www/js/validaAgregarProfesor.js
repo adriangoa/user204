@@ -140,7 +140,7 @@ jQuery(document).ready(function($){
 								success: function(data) {
 						if(data==0)//si no hay error
 						{
-							apprise('Elemento Agregado', {'textOk':'Aceptar'}, function(r)
+							apprise('Profesor Agregado', {'textOk':'Aceptar'}, function(r)
 							{
 								if(r)
 								{

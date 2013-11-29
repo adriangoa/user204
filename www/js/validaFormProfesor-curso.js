@@ -180,8 +180,50 @@ jQuery(document).ready(function($){
 			    	sinError= false;
 	  		}
 	  	}
+	  	//////////////////////////////////////////////////////////////
+		if(sinError)
+		{
+		//Serializar y Agregar
+			var datos=$("#formulario").serialize();
+			$.ajax({
+					type:'POST',
+				url: $('#baseurl').text()+"/user204/index.php?ctl=Profesor&act=agregarCurso",
+				error: function(data) {
+					apprise('Ocurrio un error . Intenta otra vez.');
+					},
+					data:datos,
+					beforeSend: function(){
+			                $.blockUI({
+			                    message:'<img style=\"width:400px;\" src=\"./www/img/cargando.gif\">',
+			                    css: { 
+			                        top:  ($(window).height() - 160) /2 + 'px', 
+			                        left: ($(window).width() - 200) /2 + 'px', 
+			                        width: '200' 
+			                    },
 
-	  	return sinError;
+			                });
+			                setTimeout($.unblockUI,4000);
+			            },
+								success: function(data) {
+						if(data==0)//si no hay error
+						{
+							apprise('Curso Agregado', {'textOk':'Aceptar'}, function(r)
+							{
+								if(r)
+								{
+									location.reload();
+								}
+							});
+						}
+						else
+						{
+							apprise('Ocurrio un error . Intenta otra vez.');
+						}
+					}
+				});
+		}
+		///////////////////////////////////////////////////////////////
+	  	return false;
 	});
 //-----------------------------------------------------------------------
   //Segeneran elementos dinamicamente cuando se da click al boton de "+"

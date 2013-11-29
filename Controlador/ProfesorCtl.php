@@ -85,10 +85,9 @@ class ProfesorCtl
 
 
 					$resultado = $this -> modelo -> agregarCurso($ciclo,$nombreCurso,$seccion,$nrc,$academia,$horasInicio,$horasFin,$dias);
-
 					if($resultado!==FALSE)
 					{
-						//se prepara la vista con los ciclos disponibles
+						/*//se prepara la vista con los ciclos disponibles
 						//Obtener la vista
 						$vista = file_get_contents("Vista/agregarCurso.html");
 
@@ -112,12 +111,13 @@ class ProfesorCtl
 							}
 
 							//echo $new_fila;
-						$vista = str_replace($fila, $filas,$vista);
-						echo $vista;
+						$vista = str_replace($fila, $filas,$vista);*/
+						echo "0";
+						//echo $vista;
 					}
 					else
 					{
-						echo "error";
+						echo "1";
 					}
 
 				}
@@ -882,13 +882,13 @@ class ProfesorCtl
 					
 					if($resultado!==FALSE)
 					{
-						
-						require_once("Vista/agregarAlumno.html");
+						echo "0";
+						///require_once("Vista/agregarAlumno.html");
 						
 					}
 					else
 					{
-						echo "error";
+						echo "1";
 					}
 
 
@@ -979,68 +979,12 @@ class ProfesorCtl
 
 						if($resultado!==FALSE)
 						{
-						//se prepara la vista con los curso disponibles
-						//Obtener la vista
-						$vista = file_get_contents("Vista/altaAlumnos.html");
-
-						$pos1 = strpos($vista, "<tbody id=\"fila-alumno\">");
-						$len1 = strlen("<tbody id=\"fila-alumno\">");
-						$url1 = substr($vista, $pos1+$len1);
-						$pos2 = strpos($url1, "</tbody id=\"fin\">");
-						$url2 = substr($url1, $pos2);
-						$fila = str_replace($url2, '', $url1);
-						//fila contiene el div de resultado
-
-
-						//Genero los resultados segun los alumnos
-						$alumnos = $this -> modelo -> obtenerAlumnos();
-						foreach ($alumnos as $row) 
-						{
-
-								$new_fila = $fila;
-								$new_fila = str_replace("CODIGO", $row['codigo'], $new_fila);
-								$new_fila = str_replace("IDALUMNO", $row['id_alumno'], $new_fila);
-								$new_fila = str_replace("NOMBRE", $row['nombre'], $new_fila);
-								if(isset($filas))
-								   $filas .= $new_fila;
-								else
-									$filas = $new_fila;
-							
-						}
-						
-
-						//se llena el select con los cursos disponibles
-						$pos1 = strpos($vista, "<select id=\"select-cursos\" name=\"curso\">");
-						$len1 = strlen("<select id=\"select-cursos\" name=\"curso\">");
-						$url1 = substr($vista, $pos1+$len1);
-						$pos2 = strpos($url1, "</select id=\"fin\">");
-						$url2 = substr($url1, $pos2);
-						$filaCurso = str_replace($url2, '', $url1);
-						//fila contiene el div de resultado
-
-
-						//Genero los resultados segun los cursos
-						$cursos = $this -> modelo -> obtenerCursos();
-						foreach ($cursos as $row) 
-						{
-
-								$new_filaCurso = $filaCurso;
-								$new_filaCurso = str_replace("VALORCURSO", $row['id'], $new_filaCurso);
-								$new_filaCurso = str_replace("NOMBRECURSO", $row['nombre'], $new_filaCurso);
-								if(isset($filasCurso))
-								   $filasCurso .= $new_filaCurso;
-								else
-									$filasCurso = $new_filaCurso;
-							
-						}
-						$vista = str_replace($fila, $filas,$vista);
-						$vista = str_replace($filaCurso, $filasCurso,$vista);
-						echo $vista;
+							echo "0";
 							
 						}
 						else
 						{
-							echo "error";
+							echo "1";
 						}
 					}
 					else
