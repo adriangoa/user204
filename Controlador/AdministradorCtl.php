@@ -57,12 +57,32 @@ class AdministradorCtl
 					}
 				}
 				break;
-			case "editarCiclo":
+			case "AgregarProfesor":
 				if(empty($_POST))
-					require_once("Vista/editarCiclo.html");
+				{
+					require_once("Vista/agregarProfesor.html");
+				}
+					
 				else
 				{
-
+					//obtiene las variables para agregar el alumno
+					$codigo = $_POST["codigo"];
+					$nombre = $_POST["nombre"];
+					$apellidos = $_POST["apellidos"];
+					$correo = $_POST["correo"];
+					
+					$resultado = $this -> modelo -> agregarProfesor($codigo,$nombre,$apellidos,$correo);
+					
+					if($resultado!==FALSE)
+					{
+						
+						require_once("Vista/agregarProfesor.html");
+						
+					}
+					else
+					{
+						echo "error";
+					}
 				}
 				break;
 

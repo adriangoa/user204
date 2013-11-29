@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sistema de calificaciones en linea</title>
+	<link rel="stylesheet" href="./www/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap-responsive.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+	<header>
+		<div>
+			<p class="sombra_leve">Sistema de calificaciones en linea</p>
+			<img src="./www/img/logo.svg" id="logo"></img>
+		</div>
+	</header>
+	<div id="menu"></div>
+	<section>
+		<div class="contenedor">
+			<div id="cuadro_formulario">
+				<form action="index.php?ctl=Administrador&act=AgregarProfesor" method="post">
+					<div id="campos_entrada">
+						<label for="codigo">Codigo</label>
+						<input type="text" id="codigo" name="codigo" maxlength="10"><br>
+						<label for="nombre">Nombre</label>
+						<input type="text" id="nombre" name="nombre" placeholder="Nombre">
+						<input type="text" id="apellidos" name="apellidos" placeholder="Apellidos"><br>
+						<label for="correo">Correo</label>
+						<input type="email" id="correo" name="correo"><br>
+					</div>
+					<div id="botones_formulario">
+						<button type="reset" class="boton">Limpiar</button>
+						<button type="submit" class="boton enviar">Agregar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
+	</footer>
+	</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="./www/js/jquery.js"></script>
+	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
+	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="./www/js/validaAgregarProfesor.js"></script>
+	<script type="text/javascript" src="./www/js/cargaMenuAdministrador.js"></script>
+</body>
+</html>
