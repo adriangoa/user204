@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 	var error= document.createElement("div");
 	var DIV= document.createElement("div");
 	sinError= true;
-
+	var arrayDias  = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 	//valida en cada elemento individualmente//por el momento solo elimina los mensajes de error
 	
 	$('#ciclo_escolar').focus(function(event) {
@@ -189,40 +189,149 @@ jQuery(document).ready(function($){
   {
   	$(".error").remove();
 		sinError=true;
-  	var ultimoHorario = $( "#campos_entrada .horario:last-child");
-  	var posicionActual =ultimoHorario.attr('id');
 
-  	posicionActual=parseInt(posicionActual.substr(posicionActual.length - 2));
-  	if(isNaN(posicionActual))//checkar si son mas de 10
-  	{
-  		posicionActual =ultimoHorario.attr('id');
-  		posicionActual=parseInt(posicionActual.substr(posicionActual.length - 1));
-  	}
+	//se procede a realizar validaciones en los campos
+	//se validan los Horarios
+		var ultimoHorario = $( "#campos_entrada .horario:last-child");
+  		var posicionActual =ultimoHorario.attr('id');
+  		posicionActual=parseInt(posicionActual.substr(posicionActual.length - 2));
+  		if(isNaN(posicionActual))//checkar si son mas de 10
+	  	{
+	  		posicionActual =ultimoHorario.attr('id');
+	  		posicionActual=parseInt(posicionActual.substr(posicionActual.length - 1));
+	  	}
+	  	for(var i=0;i<=posicionActual;i++)
+	  	{
+	  		if($("#hora-inicio"+i).val()=="")
+	  		{
+	  			$(error).text("Ingresa una hora valida")
+					.addClass("error")
+			    	.clone().insertAfter($("#hora-inicio"+i))
+			    	sinError= false;
+	  		}
+	  		else
+	  		{
+	  			//habra que validar la fecha
+	  			if($('#hora-inicio'+i).length)
+	  			{
+	  				var valor = $("#hora-inicio"+i).val();
+					if(!valor.match(/^[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/))
+					{
+					
+							$(error).text("La hora de inicio es invalida")
+									.addClass("error")
+					    			.clone().insertAfter($("#hora-inicio"+i));
+					   	sinError= false;
+					}
+	  			}
+	  			
+	  			
+	  		}
+	  		if($("#hora-fin"+i).val()=="")
+	  		{
+	  			$(error).text("Ingresa una hora valida")
+					.addClass("error")
+			    	.clone().insertAfter($("#hora-fin"+i))
+			    	sinError= false;
+	  		}
+	  		else
+	  		{
+	  			if($('#hora-fin'+i).length)
+	  			{
+	  				//validar fecha de fin
+		  			var valor = $("#hora-fin"+i).val();
+					if(!valor.match(/^[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/))
+					{
+					
+							$(error).text("La hora de fin es invalida")
+									.addClass("error")
+					    			.clone().insertAfter($("#hora-fin"+i));
+					   	sinError= false;
+					}
+					else
+					{
+						var inicio = $("#hora-inicio"+i).val();
+						var fin = $("#hora-fin"+i).val();
+						inicio = inicio.split(":");
+						fin = fin.split(":");
+						if(inicio[0]>fin[0] || (inicio[0]==fin[0] && inicio[1]==fin[1]) || (inicio[0]==fin[0] && inicio[1]>fin[1]))
+						{
+							$(error).text("La hora inicio debe ser menor a la hora final")
+									.addClass("error")
+					    			.clone().insertAfter($("#hora-fin"+i));
+					   		sinError= false;
+						}
+					}
+	  			}
+	  			
+	  		}
+	  		if($("#dia"+i).val()=="")
+	  		{
+	  			$(error).text("Seleciona un dia")
+					.addClass("error")
+			    	.clone().insertAfter($("#dia"+i))
+			    	sinError= false;
+	  		}
+	  	}
 
-  	nuevaPosicion=posicionActual+1;
+	 if(sinError==true)
+	 {
+	 	
+  		
+
+	 	var ultimoHorario = $( "#campos_entrada .horario:last-child");
+	  	var posicionActual =ultimoHorario.attr('id');
+
+	  	posicionActual=parseInt(posicionActual.substr(posicionActual.length - 2));
+	  	if(isNaN(posicionActual))//checkar si son mas de 10
+	  	{
+	  		posicionActual =ultimoHorario.attr('id');
+	  		posicionActual=parseInt(posicionActual.substr(posicionActual.length - 1));
+	  	}
+
+	  	//se elimina del diccionario el dia seleccionado
+	  	var dia = $("#dia"+(i-1)).val();
+	  	var index = arrayDias.indexOf(dia);
+		arrayDias.splice(index, 1);
+
+		
+
+	  	nuevaPosicion=posicionActual+1;
+	  	
+	  	//se crea el nuevo elemento
+	  	var cadena="";
+	  	cadena+="<label for=\"hora-inicio"+nuevaPosicion+"\">Hora inicio:</label>";
+		cadena+="<input type=\"text\" name=\"hora-inicio"+nuevaPosicion+"\" id=\"hora-inicio"+nuevaPosicion+"\" placeholder=\"00:00\"><br>";
+		cadena+="<label for=\"hora-fin"+nuevaPosicion+"\">Hora fin:</label>";
+		cadena+="<input type=\"text\" name=\"hora-fin"+nuevaPosicion+"\" id=\"hora-fin"+nuevaPosicion+"\" placeholder=\"00:00\"><br>";								
+		cadena+="<label for=\"dia"+nuevaPosicion+"\">Dia:</label>";
+		cadena+="<select id=\"dia"+nuevaPosicion+"\" name=\"dia"+nuevaPosicion+"\" >";
+		cadena+="<option value=\"\"></option>";
+		//ciclo para llenar el select con los dias restantes
+		for (var i = 0; i <= arrayDias.length - 1; i++) {
+			cadena+="<option value="+arrayDias[i]+" >"+arrayDias[i]+"</option>";
+		};
+		cadena+="</select><br><button type='button' class='btn btn-warning eliminar' id='"+nuevaPosicion+"'>Eliminar</button><br>";				
+	  	$(DIV).html(cadena)
+			  .attr('id', "div-horario"+nuevaPosicion)
+			  .addClass("horario")
+			  .clone().insertAfter("#div-horario"+(nuevaPosicion-1));
+	 }
+
   	
-  	//se crea el nuevo elemento
-  	var cadena="";
-  	cadena+="<label for=\"hora-inicio"+nuevaPosicion+"\">Hora inicio:</label>";
-	cadena+="<input type=\"text\" name=\"hora-inicio"+nuevaPosicion+"\" id=\"hora-inicio"+nuevaPosicion+"\" placeholder=\"00:00\"><br>";
-	cadena+="<label for=\"hora-fin"+nuevaPosicion+"\">Hora fin:</label>";
-	cadena+="<input type=\"text\" name=\"hora-fin"+nuevaPosicion+"\" id=\"hora-fin"+nuevaPosicion+"\" placeholder=\"00:00\"><br>";								
-	cadena+="<label for=\"dia"+nuevaPosicion+"\">Dia:</label>";
-	cadena+="<select id=\"dia"+nuevaPosicion+"\" name=\"dia"+nuevaPosicion+"\">";
-	cadena+="<option value=\"\"></option><option value=\"lunes\">Lunes</option>";
-	cadena+="<option value=\"martes\">Martes</option><option value=\"miercoles\">Miercoles</option>";
-	cadena+="<option value=\"jueves\">Jueves</option><option value=\"viernes\">Viernes</option>";
-	cadena+="<option value=\"sabado\">Sabado</option></select><br>";
-
-								
-  	$(DIV).html(cadena)
-		  .attr('id', "div-horario"+nuevaPosicion)
-		  .addClass("horario")
-		  .clone().insertAfter("#div-horario"+(nuevaPosicion-1));
 
   	
   	return false;
   });
+
+//Se eliminan los horarios cuando se aprieta su correspondiente boton
+$('body').on('click', 'button.eliminar', function() {
+	//se regresa el dia al arreglo
+	dia = $('select#dia'+$(this).attr('id')).val();
+	arrayDias.push(dia);
+    $('div#div-horario'+$(this).attr('id')).remove();
+});
+
 
 });
 

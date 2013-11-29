@@ -74,6 +74,7 @@ section{
 	-moz-box-shadow: 0px 5px 25px 2px rgba(0, 0, 0, 0.3);
 	-o-box-shadow: 0px 5px 25px 2px rgba(0, 0, 0, 0.3);
 }
+
 /* ESTILO PARA FORMULARIOS*/
 form label{
 	text-align: right;
@@ -308,7 +309,7 @@ form #campos_entrada input.oculto{
 }
 
 .bordered tr:hover {
-    background: #fbf8e9;
+    background: rgba(255,255,255,0.4);
     -o-transition: all 0.1s ease-in-out;
     -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
@@ -373,9 +374,25 @@ form #campos_entrada input.oculto{
     -webkit-border-radius: 0 0 6px 0;
     border-radius: 0 0 6px 0;
 }
+.bordered td.columna-mini{
+	width: 15px;
+}
+.bordered td p.mini {
+	margin: 0 ;
+	font-size: 0.8em;
+}
 
 .puntero{
 	cursor: pointer;
+}
+
+.rot-neg-90 {
+  -moz-transform: rotate(270deg);
+ /* -moz-transform-origin: 50% 50%;*/
+  -webkit-transform: rotate(270deg);
+  -webkit-transform-origin: 50% 50%;
+  height: 7em;
+ 
 }
 
 

@@ -30,7 +30,10 @@ jQuery(document).ready(function($){
      	return false;
 	});
 
+
+//se genera el formulario para agregar calificaciones a las hojas
 	$(".generar").click(function (e){
+
 
 		//se obtiene la cantidad del input
 		var cantidad = $("#cantidad-hojas").val();
@@ -53,6 +56,14 @@ jQuery(document).ready(function($){
 
 				$(INPUT).attr({
 						'type': 'text',
+						'class':'nombrePorcentaje',
+						'placeholder': 'Nombre',
+						'name':"nombre"+i,
+						});
+				$("#contenedor-inputs").append($(INPUT).clone());
+
+				$(INPUT).attr({
+						'type': 'text',
 						'class':'inputPorcentaje',
 						'placeholder': 'porcentaje',
 						'name':"porcentaje"+i,
@@ -72,6 +83,14 @@ jQuery(document).ready(function($){
 						});
 			$("#contenedor-inputs").append($(INPUT).clone());
 
+			//input hidden para saber el curso
+			$(INPUT).attr({
+						'type': 'hidden',
+						'value':  $("tr."+$(this).attr("id")).attr("id"),//$("tr."+$(this).attr("id")).parent().parent().attr("id")
+						'name':'id-curso',
+						'class':'j'
+						});
+			$("#contenedor-inputs").append($(INPUT).clone());
 			//Por ultimo se genera un boton para enviar el formulario y un input que identificara la actividad
 			$(INPUT).attr({
 						'type': 'hidden',
@@ -110,10 +129,14 @@ jQuery(document).ready(function($){
 		   	else
 		   		porcentajeActual+=parseInt($(this).val());
 		});
+		$('.nombrePorcentaje').each(function(){
+		   if(($(this).val()==""))
+		   		sinError=false;
+		});
 
 		if(sinError==false)
 		{
-			$(DIV).text("Ingresa un valor numerico valido en todos los campos")
+			$(DIV).text("Ingresa un valor numerico valido en todos los campos de porentaje y nombres correspondientes")
 					.addClass("error")
 					.css('display', 'block')
 			    	.clone().insertAfter($("#contenedor-inputs"));

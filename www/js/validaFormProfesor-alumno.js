@@ -140,14 +140,14 @@ jQuery(document).ready(function($){
 		{
 			var nombreInvalido=false;
 			var valor = $("#nombre").val();
-			if(!valor.match(/^[a-zA-Z]{1,}$/))//se valida que el nombre sea real!
+			if(!valor.match(/^[a-zA-Z ñÑ]{1,}$/))//se valida que el nombre sea real!
 			{
 			    nombreInvalido=true;
 			    sinError= false;
 			}
 
 			var valor = $("#apellidos").val();
-			if(!valor.match(/^[a-zA-Z]{1,}$/))//se valida que el nombre sea real!
+			if(!valor.match(/^[a-zA-Z ñÑ]{1,}$/))//se valida que el nombre sea real!
 			{
 				
 				
