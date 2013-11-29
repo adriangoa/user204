@@ -18,57 +18,7 @@
 			<img id="logo" src="./www/img/logo.png" alt="Estudiantes">
 		</div>
 	</header>
-	<div class="navbar">
-					<div class="navbar-inner">
-						<div class="container" style="width: auto;">
-							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>
-							<a class="brand" href="index.php?ctl=Profesor&act=0">Califix</a>
-							<div class="nav-collapse">
-								<ul class="nav">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li class="nav-header">
-												Cursos
-											</li>
-											<li><a href="index.php?ctl=Profesor&act=agregarCurso">Agregar</a></li>
-											<li><a href="index.php?ctl=Profesor&act=configurarCurso">Configuar</a></li>
-											<li class="divider"></li>
-											<li class="nav-header">
-												Calificaciones y asistencias
-											</li>
-											<li><a href="index.php?ctl=Profesor&act=agregarCalificaciones">Agregar calificaciones</a></li>
-											<li><a href="index.php?ctl=Profesor&act=agregarAsistencias">Nombrar Asistencia</a></li>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alumnos <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li class="nav-header">
-												Registro y alta
-											</li>
-											<li><a href="index.php?ctl=Profesor&act=agregarAlumno">Registrar nuevo alumno</a></li>
-											<li><a href="index.php?ctl=Profesor&act=altaAlumnos">Dar de alta a curso</a></li>
-										</ul>
-									</li>
-								</ul>
-								<ul class="nav pull-right">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-user"></i> Michelle Torres <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Ver perfil</a></li>
-											<li><a href="#">Cerrar sesion</a></li>
-										</ul>
-									</li>
-								</ul>
-							</div><!-- /.nav-collapse -->
-						</div>
-					</div><!-- /navbar-inner -->
-				</div>
+	<div id="menu"></div>
 	<section>
 		<div class="contenedor">
 			<div id="cuadro_formulario">
@@ -136,5 +86,6 @@
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
 	<script type="text/javascript" src="./www/js/validaAltaAlumno.js"></script>
+	<script type="text/javascript" src="./www/js/cargaMenuProfesor.js"></script>
 </body>
 </html>

@@ -6,6 +6,10 @@ class AlumnoCtl
 
 	public function ejecutar()
 	{
+
+		session_start();
+		if($_SESSION['tipo']!=2)
+			header("Location: /user204/index.php");
 		require_once("Modelo/AlumnoMdl.php");
 
 		$this->modelo = new AlumnoMdl();
@@ -110,18 +114,25 @@ class AlumnoCtl
 										$new_filaActividad = str_replace("Actividad", $raw['actividad'], $new_filaActividad);
 										$new_filaActividad = str_replace("idAct", $raw['id'], $new_filaActividad);
 										$new_filaActividad = str_replace("Porcentaje", $raw['porcentaje']."%", $new_filaActividad);
-
-										foreach ($calificaciones_actividades as $calificacion) {
-											if($calificacion['id_curso']==$curso['id'] and 
-											$calificacion['id_actividad']==$raw['id'])
-											{
-												$new_filaActividad = str_replace("Calificacion",$calificacion['calificacion']." pts",$new_filaActividad);
-												break;
-											}
-											else{
-												$new_filaActividad = str_replace("Calificacion","N\A",$new_filaActividad);												
+										if($calificaciones_actividades!=FALSE)
+										{
+											foreach ($calificaciones_actividades as $calificacion) {
+												if($calificacion['id_curso']==$curso['id'] and 
+												$calificacion['id_actividad']==$raw['id'])
+												{
+													$new_filaActividad = str_replace("Calificacion",$calificacion['calificacion']." pts",$new_filaActividad);
+													break;
+												}
+												else{
+													$new_filaActividad = str_replace("Calificacion","N\A",$new_filaActividad);												
+												}
 											}
 										}
+										else
+										{
+											$new_filaActividad = str_replace("Calificacion","N\A",$new_filaActividad);
+										}
+										
 
 										if(isset($filasActividad))
 										   $filasActividad .= $new_filaActividad;
@@ -348,6 +359,16 @@ class AlumnoCtl
 					echo $vista;
 				}
 				break;
+
+				case "regresarMenu":
+				$menu = file_get_contents("Vista/menuAlumno.html");
+				if(isset($_SESSION['nombre']))
+					$menu = str_replace("[USUARIO]", $_SESSION['nombre'], $menu);
+				else
+					$menu = str_replace("[USUARIO]", "Hacker", $menu);
+
+				echo $menu;
+			break;
 
 			default:
 			 	require_once("Vista/InicioAlumno.html");

@@ -18,97 +18,34 @@
 			<img id="logo" src="./www/img/logo.png" alt="Estudiantes">
 		</div>
 	</header>
-	<div class="navbar">
-					<div class="navbar-inner">
-						<div class="container" style="width: auto;">
-							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>
-							<a class="brand" href="index.php?ctl=Profesor&act=0">Califix</a>
-							<div class="nav-collapse">
-								<ul class="nav">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li class="nav-header">
-												Cursos
-											</li>
-											<li><a href="index.php?ctl=Profesor&act=agregarCurso">Agregar</a></li>
-											<li><a href="index.php?ctl=Profesor&act=configurarCurso">Configuar</a></li>
-											<li class="divider"></li>
-											<li class="nav-header">
-												Calificaciones y asistencias
-											</li>
-											<li><a href="index.php?ctl=Profesor&act=agregarCalificaciones">Agregar calificaciones</a></li>
-											<li><a href="index.php?ctl=Profesor&act=agregarAsistencias">Nombrar Asistencia</a></li>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alumnos <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li class="nav-header">
-												Registro y alta
-											</li>
-											<li><a href="index.php?ctl=Profesor&act=agregarAlumno">Registrar nuevo alumno</a></li>
-											<li><a href="index.php?ctl=Profesor&act=altaAlumnos">Dar de alta a curso</a></li>
-										</ul>
-									</li>
-								</ul>
-								<ul class="nav pull-right">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-user"></i> Michelle Torres <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Ver perfil</a></li>
-											<li><a href="#">Cerrar sesion</a></li>
-										</ul>
-									</li>
-								</ul>
-							</div><!-- /.nav-collapse -->
-						</div>
-					</div><!-- /navbar-inner -->
-				</div>
+	<div id="menu"></div>
 	<section>
 		<div class="contenedor">
 			<div id="cuadro_formulario">
-				<form action="#" method="get">
+				<form action="index.php?ctl=Profesor&act=clonarCurso" method="post">
 					<div id="campos_entrada">
-						<label for="ciclo">Ciclo escolar:</label>
-						<select name="ciclo">
-							<option>2012A</option>
-							<option>2012B</option>
-							<option>2013A</option>
-							<option>2013B</option>
-							<option>2014A</option>
+						<label for="cicloBase">Ciclo del curso: </label>
+						<select id='cicloBase' name="cicloBase">
+							<option></option>
 						</select><br>
-						<label for="ciclo">Curso a clonar:</label>
-						<select name="ciclo">
-							<option>Ejemplo curso</option>
-							<option>Ejemplo curso</option>
-							<option>Ejemplo curso</option>
-							<option>Ejemplo curso</option>
-							<option>Ejemplo curso</option>
+						<label for="cursosBase">Curso a clonar: </label>
+						<select id='cursosBase' name="cursoBase">
 						</select><br>
-						<label for="ciclo">Clonar a:</label>
-						<select name="ciclo">
-							<option>2012A</option>
-							<option>2012B</option>
-							<option>2013A</option>
-							<option>2013B</option>
-							<option>2014A</option>
-						</select><br>
+						<label for="cicloClonar">Clonar en: </label>
+						<select id='cicloClonar' name="cicloClonar">
+							<option></option>
+						</select>
 					</div>
 					<div id="botones_formulario">
 						<button type="reset" class="boton">Limpiar</button>
-						<button type="submit" class="boton">Clonar</button>
+						<button type="submit" class="boton" id="btn-clonar">Clonar</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</section>
 	<footer>
-		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usuario</p>
+		<p class="sombra_leve"><i class="icon-warning-sign"></i> El uso de esta plataforma es responsabilidad de cada usario</p>
 	</footer>
 			</div>
 		</div>
@@ -116,5 +53,8 @@
 	<script type="text/javascript" src="./www/js/jquery.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./www/js/bootstrap-collapse.js"></script>
+	<script type="text/javascript" src="./www/js/clonarCurso.js"></script>
+	<script type="text/javascript" src="./www/js/validaClonarCurso.js"></script>
+	<script type="text/javascript" src="./www/js/cargaMenuProfesor.js"></script>
 </body>
 </html>

@@ -16,35 +16,36 @@
 	<section>
 		<div class="contenedor">
 			<div id="cuadro_formulario">
-				<form action="index.php" method="post">
+				<form action="index.php?ctl=Login&act=Recuperar" method="post" id="formularioRecuperar">
 					<div id="campos_entrada">
-						<label for="usuario">Usuario:</label>
+						<label for="usuario">Codigo:</label>
 						<input type="text" name="usuario" id="usuario"><br>
-						<label for="password">Contraseña:</label>
-						<input type="password" name="password" id="password">
+						<label for="password">Correo:</label>
+						<input type="text" name="correo" id="correo">
 						
 					</div>
 					<div id="botones_formulario">
 						<input type="reset" value="Limpiar" class="boton">
-						<button type="submit" class="boton enviar">Entrar</button>
+						<button type="submit" class="boton enviar">Recuperar</button>
 					</div>
 				</form>
 			</div>
 			<br>
-			<a href="index.php?ctl=Login&act=Recuperar">
-				<button class="btn btn-warning" type="button">Olvidé mi contraseña</button>
+			<a href="index.php?ctl=Login&act=Login">
+				<button class="btn btn-success" type="submit">Iniciar sesion</button>
 			</a>
 
 									
+								
 		</div>
 	</section>
 	<footer>
-		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usario-</p>
+		<p class="sombra_leve">-El uso de esta plataforma es responsabilidad de cada usuario-</p>
 	</footer>
 	
 	<script type="text/javascript" src="./www/js/jquery.js"></script>
 	<script type="text/javascript" src="./www/js/sha1.js"></script>
-	<script type="text/javascript" src="./www/js/validaLogin.js"></script>
+	<script type="text/javascript" src="./www/js/validaRecuperarContrasena.js"></script>
 	<script type="text/javascript" src="./www/js/cifrarPassword.js"></script>
 </body>
 </html>
