@@ -43,7 +43,15 @@ jQuery(document).ready(function($){
 					type:'POST',
 				url: $('#baseurl').text()+"/user204/index.php?ctl=Profesor&act=altaAlumnos",
 				error: function(data) {
-					apprise('Ocurrio un error . Intenta otra vez.');
+					
+					apprise('Alumno Agregado', {'textOk':'Aceptar'}, function(r)
+							{
+								if(r)
+								{
+
+									location.reload();
+								}
+							});
 					},
 					data:datos,
 					beforeSend: function(){
@@ -72,7 +80,14 @@ jQuery(document).ready(function($){
 						}
 						else
 						{
-							apprise('Ocurrio un error . Intenta otra vez.');
+							apprise('Alumno Agregado', {'textOk':'Aceptar'}, function(r)
+							{
+								if(r)
+								{
+
+									location.reload();
+								}
+							});
 						}
 					}
 				});

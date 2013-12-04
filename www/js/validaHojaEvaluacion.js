@@ -16,25 +16,49 @@ jQuery(document).ready(function($){
 
 	//___________________
 	$(".hoja").click(function (e) {
-		//se muestra el formulario correspondiente a las hojas
-		var formulario = $("#formulario-hojas");
-		formulario.css('display', '');
+		$("#formulario-hojas").css('display', 'none');
+		//antes de mostrar el formulario se verifica que no exista ya en la base de datos
+		var idActividad=$(this).parent().parent().attr("class");
+		////
+		$.ajax({
+				type:'GET',
+				url: $('#baseurl').text()+"/user204/index.php?ctl=Profesor&act=validaActividad&idActividad="+idActividad+"",
+				error: function(data) {
+					apprise('Ocurrio un error . Intenta otra vez.');
+					},
+				success: function(data) {
+						if(data==0)//si la actividad ya tiene hoja de evalucion
+						{
+							apprise('La actividad ya tiene hoja de evaluacion', {'textOk':'Aceptar'}, function(r)
+							{
+							});
+						}
+						else
+						{
+							//se muestra el formulario correspondiente a las hojas
+							var formulario = $("#formulario-hojas");
+							formulario.css('display', '');
 
-		//se pone un id al boton general que hace referencia a la actividad relacionada
-		var boton = $("#formulario-hojas button.generar");
-		boton.attr('id', $(this).parent().parent().attr("class"));
+							//se pone un id al boton general que hace referencia a la actividad relacionada
+							var boton = $("#formulario-hojas button.generar");
+							boton.attr('id', $(this).parent().parent().attr("class"));
 
-		//se hace focus sobre se input y se mueve la pagina hasta el
-		$('html, body').animate({ scrollTop: $("#cantidad-hojas").offset().top }, 500);
-		$("#cantidad-hojas").focus();
+							//se hace focus sobre se input y se mueve la pagina hasta el
+							$('html, body').animate({ scrollTop: $("#cantidad-hojas").offset().top }, 500);
+							$(".generar").attr('id', idActividad);
+							$("#cantidad-hojas").focus();
+						}
+					}
+				});
+		
+		///////7
+		
      	return false;
 	});
 
 
 //se genera el formulario para agregar calificaciones a las hojas
 	$(".generar").click(function (e){
-
-
 		//se obtiene la cantidad del input
 		var cantidad = $("#cantidad-hojas").val();
 		//se valida que la cantidad se un digito valido
@@ -82,6 +106,7 @@ jQuery(document).ready(function($){
 						'class':'j'
 						});
 			$("#contenedor-inputs").append($(INPUT).clone());
+
 
 			//input hidden para saber el curso
 			$(INPUT).attr({

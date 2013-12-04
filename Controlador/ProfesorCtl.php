@@ -9,8 +9,10 @@ class ProfesorCtl
 		if($_SESSION['tipo']!=1)
 			header("Location: /user204/index.php");
 		require_once("Modelo/ProfesorMdl.php");
+		require_once "www/dompdf/dompdf_config.inc.php";
 		
 		$this->modelo = new ProfesorMdl();
+		$dompdf= new DOMPDF();
 		switch ($_GET['act'])
 		{
 			case "agregarCurso":
@@ -85,7 +87,7 @@ class ProfesorCtl
 
 
 					$resultado = $this -> modelo -> agregarCurso($ciclo,$nombreCurso,$seccion,$nrc,$academia,$horasInicio,$horasFin,$dias);
-					if($resultado!==FALSE)
+					if($resultado!=FALSE)
 					{
 						/*//se prepara la vista con los ciclos disponibles
 						//Obtener la vista
@@ -229,7 +231,7 @@ class ProfesorCtl
 					
 
 					$resultado = $this -> modelo -> agregarActividad($idCurso, $actividad, $porcentaje);
-					if($resultado!==FALSE)
+					if($resultado!=FALSE)
 					{   
 						//se prepara la vista con los curso disponibles
 						//Obtener la vista
@@ -312,6 +314,7 @@ class ProfesorCtl
 						$vista = str_replace($fila, $filas,$vista);
 						echo $vista;	
 					}
+					Header('Location:  index.php?ctl=Profesor&act=configurarCurso');
 				}
 				break;
 
@@ -367,6 +370,7 @@ class ProfesorCtl
 							$new_fila = str_replace("NombreCurso", $row['nombre'], $new_fila);
 							$new_fila = str_replace("Academia", $row['academia'], $new_fila);
 							$new_fila = str_replace("NRC", "NRC: ".$row['nrc'], $new_fila);
+							$new_fila = str_replace("[DESCARGA]", "descargaCalificaciones(".$row['id'].")", $new_fila);
 							$new_fila = str_replace("actividad", "actividad".$row['id'], $new_fila);//este hace referencia al id del input
 							$new_fila = str_replace("porcentaje", "porcentaje".$row['id'], $new_fila);
 							$new_fila = str_replace("boton-agregar", $row['id'], $new_fila);//para saber que validar
@@ -433,7 +437,7 @@ class ProfesorCtl
 						$hojasExtras= $this -> modelo ->obtenerHojasExtras($actividad["id"]);
 						$i=0;
 						$total=0;
-						if($hojasExtras!==FALSE)
+						if($hojasExtras!=FALSE)
 						{
 							foreach ($hojasExtras as $hoja) {
 								$arrayHojasExtras[$hoja["id"]]=$_POST[$actividad["id"]."-".$i];
@@ -449,14 +453,14 @@ class ProfesorCtl
 
 					$resultado = $this -> modelo -> agregarCalificacionesActividades($codigoAlumno,$idCurso,$arrayCalificaciones);
 					$resultado2 = $this -> modelo -> agregarCalificacionesHojasExtras($codigoAlumno,$idCurso,$arrayHojasExtras);
-					if($resultado!==FALSE && $resultado2!==FALSE)
+					if($resultado!=FALSE && $resultado2!=FALSE)
 					{
 						header("Location: index.php?ctl=Profesor&act=agregarCalificaciones"); /* Redirect browser */
 					}
 					else
 					{
 
-						echo "error";
+						header("Location: index.php?ctl=Profesor&act=agregarCalificaciones");
 					}
 				}
 				break;
@@ -522,16 +526,17 @@ class ProfesorCtl
 							$new_fila = str_replace("NombreCurso", $row['nombre'], $new_fila);
 							$new_fila = str_replace("Academia", $row['academia'], $new_fila);
 							$new_fila = str_replace("NRC", "NRC: ".$row['nrc'], $new_fila);
+							$new_fila = str_replace("[DESCARGA]", "descargaAsistencias(".$row['id'].")", $new_fila);
 							$new_fila = str_replace("actividad", "actividad".$row['id'], $new_fila);//este hace referencia al id del input
 							$new_fila = str_replace("porcentaje", "porcentaje".$row['id'], $new_fila);
 							$new_fila = str_replace("boton-agregar", $row['id'], $new_fila);//para saber que validar
 							//se adaptan las tablas para segun las fechas a mostrar
 							if(count($actividades)>0)
 							{
-								$new_fila = str_replace("colspan1", count($actividades)/3, $new_fila);//para saber que validar
-								$new_fila = str_replace("colspan2", count($actividades)/3, $new_fila);//para saber que validar
-								$new_fila = str_replace("colspan3", (count($actividades)/3)+1, $new_fila);//para saber que validar
-								$new_fila = str_replace("[colspanBoton]", count($actividades)+1, $new_fila);//para saber que validar
+								$new_fila = str_replace("colspan1", (count($actividades)/3), $new_fila);//para saber que validar
+								$new_fila = str_replace("colspan2", (count($actividades)/3), $new_fila);//para saber que validar
+								$new_fila = str_replace("colspan3", ceil((count($actividades)/3)), $new_fila);//para saber que validar
+								$new_fila = str_replace("[colspanBoton]", count($actividades)+50, $new_fila);//para saber que validar
 							}
 							if($actividades===FALSE)
 							{
@@ -729,10 +734,10 @@ class ProfesorCtl
 							//se adaptan las tablas para segun las fechas a mostrar
 							if(count($actividades)>0)
 							{
-								$new_fila = str_replace("colspan1", count($actividades)/3, $new_fila);//para saber que validar
-								$new_fila = str_replace("colspan2", count($actividades)/3, $new_fila);//para saber que validar
-								$new_fila = str_replace("colspan3", (count($actividades)/3)+1, $new_fila);//para saber que validar
-								$new_fila = str_replace("[colspanBoton]", count($actividades)+1, $new_fila);//para saber que validar
+								$new_fila = str_replace("colspan1", (count($actividades)/3), $new_fila);//para saber que validar
+								$new_fila = str_replace("colspan2",(count($actividades)/3), $new_fila);//para saber que validar
+								$new_fila = str_replace("colspan3", ceil((count($actividades)/3)), $new_fila);//para saber que validar
+								$new_fila = str_replace("[colspanBoton]", count($actividades)+50, $new_fila);//para saber que validar
 							}
 							if($actividades===FALSE)
 							{
@@ -880,7 +885,7 @@ class ProfesorCtl
 					
 					$resultado = $this -> modelo -> agregarAlumno($codigo,$nombre,$apellidos,$carrera,$correo,$celular,$github,$web);
 					
-					if($resultado!==FALSE)
+					if($resultado!=FALSE)
 					{
 						echo "0";
 						///require_once("Vista/agregarAlumno.html");
@@ -977,7 +982,7 @@ class ProfesorCtl
 						$curso = $_POST["curso"];
 						$resultado = $this -> modelo -> darAltaAlumnos($codigos,$curso);
 
-						if($resultado!==FALSE)
+						if($resultado!=FALSE)
 						{
 							echo "0";
 							
@@ -1009,7 +1014,7 @@ class ProfesorCtl
 					//se clona el curso
 					$clonar = $this -> modelo -> clonarCurso($cicloBase, $idCurso, $cicloClonar);
 
-					if($resultado!==FALSE)
+					if($resultado!=FALSE)
 					{
 						//se carga la vista
 						require_once("Vista/clonarCurso.html");
@@ -1043,7 +1048,7 @@ class ProfesorCtl
 
 					$resultado = $this -> modelo -> agregarHojaExtra($actividad,$cantidad,$nombres,$porcentajes,$idCurso);
 					
-					if($resultado!==FALSE)
+					if($resultado!=FALSE)
 					{
 						
 						header("Location: index.php?ctl=Profesor&act=configurarCurso"); /* Redirect browser */
@@ -1051,7 +1056,7 @@ class ProfesorCtl
 					}
 					else
 					{
-						echo "error";
+						header("Location: index.php?ctl=Profesor&act=configurarCurso");
 					}
 
 				}
@@ -1060,7 +1065,7 @@ class ProfesorCtl
 					//se obtiene la variable correspondiente ala actividad
 					$idActividad=$_GET["idActividad"];
 					$resultado = $this -> modelo -> obtenerHojasExtras($idActividad);
-					if($resultado!==FALSE)
+					if($resultado!=FALSE)
 					{
 						
 						echo json_encode($resultado);
@@ -1076,7 +1081,7 @@ class ProfesorCtl
 					$idCurso=$_GET["idCurso"];
 					$actividades = $this -> modelo -> obtenerActividades($idCurso);
 					//$hojasExtras = $this -> modelo -> obtenerHojasExtras($idActividad);
-					if($actividades!==FALSE)
+					if($actividades!=FALSE)
 					{
 						
 						echo json_encode($actividades);
@@ -1092,7 +1097,7 @@ class ProfesorCtl
 					//se obtiene la variable correspondiente al curso
 					$idCurso=$_GET["idCurso"];
 					$hojasExtras = $this -> modelo -> obtenerHojasExtrasXCurso($idCurso);
-					if($hojasExtras!==FALSE)
+					if($hojasExtras!=FALSE)
 					{
 						
 						echo json_encode($hojasExtras);
@@ -1110,7 +1115,7 @@ class ProfesorCtl
 					$calificacionesHojas = $this -> modelo -> obtenerCalificacionesHojas($codigoAlumno);
 					if($calificacionesHojas===FALSE)
 					{
-						
+						echo "1";
 					}
 					else
 					{
@@ -1124,23 +1129,20 @@ class ProfesorCtl
 					$idCurso=$_GET["idCurso"];
 					//echo "hola";
 					$calificacionesActividades = $this -> modelo -> obtenerCalificacionesActividades($codigoAlumno,$idCurso);
-					if($calificacionesActividades!==FALSE)
+					if($calificacionesActividades===FALSE)
 					{
-						
-						echo json_encode($calificacionesActividades);
-						
-
-						
+						echo "1";
 					}
 					else
 					{
-							
+						
+						echo json_encode($calificacionesActividades);
 					}
 				break;
 
 			case "regresarCiclos":
 				$ciclos = $this -> modelo -> obtenerCiclos();
-				if($ciclos!==FALSE)
+				if($ciclos!=FALSE)
 					{
 						echo json_encode($ciclos);
 					}
@@ -1149,7 +1151,7 @@ class ProfesorCtl
 			case "regresarCursos":
 				$ciclo = $_GET['ciclo'];
 				$cursos = $this -> modelo -> obtenerCursoXCiclo($ciclo);
-				if($cursos!==FALSE)
+				if($cursos!=FALSE)
 					{
 
 						echo json_encode($cursos);
@@ -1165,6 +1167,62 @@ class ProfesorCtl
 
 				echo $menu;
 			break;
+
+			case "validaActividad":
+				$idActividad = $_GET["idActividad"];
+				$resultado = $this -> modelo -> existeHojaActividad($idActividad);
+
+				if($resultado!=FALSE)
+					{
+						echo "0";
+							
+					}
+				else
+					{
+						echo "1";
+					}
+				break;
+
+			case "descargaCalificaciones":
+				$idCurso=$_GET["idCurso"];
+				$resultado = $this -> modelo -> descargaCalificaciones($idCurso);
+				if($resultado!=FALSE)
+					{
+						$dompdf->load_html($resultado);
+						$dompdf->render();
+						$dompdf->stream("calificaciones.pdf");
+							
+					}
+				else
+					{
+						$dompdf->load_html($resultado);
+						$dompdf->render();
+						$dompdf->stream("calificaciones.pdf");
+					}
+				header("Location: /user204/index.php?ctl=Profesor&act=agregarCalificaciones");
+
+			break;
+
+			case "descargaAsistencias":
+				$idCurso=$_GET["idCurso"];
+				$resultado = $this -> modelo -> descargaAsistencias($idCurso);
+				if($resultado!=FALSE)
+					{
+						$dompdf->load_html($resultado);
+						$dompdf->render();
+						$dompdf->stream("Asistencias.pdf");
+							
+					}
+				else
+					{
+						$dompdf->load_html($resultado);
+						$dompdf->render();
+						$dompdf->stream("Asistencias.pdf");
+					}
+				header("Location: /user204/index.php?ctl=Profesor&act=agregarAsistencias");
+
+			break;
+
 
 
 			default:

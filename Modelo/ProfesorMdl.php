@@ -88,7 +88,7 @@ class ProfesorMdl
 			if($r === FALSE)
 				return FALSE;
 			else
-				$this -> enviarCorreo($nombre,$correo,$clave);
+				$this -> enviarCorreo($nombre,$correo,$clave,$codigo);
 	}
 	function obtenerCiclos()
 	{
@@ -172,13 +172,10 @@ class ProfesorMdl
 			return FALSE;	
 	}
 
-	function enviarCorreo($nombre,$correo,$clave)
+	function enviarCorreo($nombre,$correo,$clave,$codigo)
 	{
 			$mail = new PHPMailer();
 			
-			$codigo_verificacion = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"), 0,5);
-
-
 			$mail->IsSMTP(); // enable SMTP
 			$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
 			$mail->SMTPAuth = true; // authentication enabled
@@ -193,18 +190,12 @@ class ProfesorMdl
 			$mail->Body = '
 					<div id="contenedor" style="background-color: #FFFFFF;text-align: center;">
 
-						<div style="background-color:#32AABB; width:100%; height:40px; text-align:center;"><h1 style="color:white; font-weight:bold;">Bienvenido</h1></div>
-						<div style="text-align: center">
-							<p style="font-size: 18px; color:gray;">
-							Para hacer uso de tu cuenta ingresa el siguiente codigo de verificacion:
-							<span style="font-size: 19px; color:#FF4719">'.$codigo_verificacion.'</span></p><br />
-							<a href="http://localhost/user204/"><input type="button" value="Verificar" style="border:1px solid #CED5D7;box-shadow: 0 0 0 3px #EEF5F7;padding: 8px 16px 8px 16px;border-radius: 5px;font-weight: bold;color:black;"></a>
-						</div>
+						<div style="background-color:#32AABB; width:100%; height:40px; text-align:center;"><h1 style="color:white; font-weight:bold;">Bienvenido Alumno</h1></div>
 						<div style="text-align: center">
 							<h2>Datos de acceso</h2>
 							<br />
 								<div style="text-align: center">
-								<span style="font-weight:bold;font-size: 17px;">Usuario:</span> '.$correo.'
+								<span style="font-weight:bold;font-size: 17px;">Usuario:</span> '.$codigo.'
 								<br />
 								<span style="font-weight:bold;font-size: 17px;">Contrase&ntilde;a:</span> '.$clave.'
 							</div>
@@ -387,7 +378,7 @@ class ProfesorMdl
 		$consulta ="SELECT * FROM calificaciones_hojas WHERE id_alumno = $idAlumno";
 		$resultado = $this -> driver->query($consulta);
 
-		if($resultado === FALSE)
+		if($resultado ->num_rows==0)
 				return FALSE;
 		//se procesa el resultado
 		else
@@ -402,7 +393,7 @@ class ProfesorMdl
 		$consulta ="SELECT * FROM calificaciones_Actividades WHERE id_alumno=$idAlumno AND id_curso=$idCurso";
 		$resultado = $this -> driver->query($consulta);
 
-		if($resultado === FALSE)
+		if($resultado ->num_rows==0)
 				return FALSE;
 		//se procesa el resultado
 		else
@@ -483,27 +474,6 @@ class ProfesorMdl
 					$diasDisponibles[]=$dia;
 			}
 			return $diasDisponibles;
-
-
-
-			//Se obtienen los horarios del curso
-			$consulta ="SELECT * FROM horarios WHERE idCurso='".$idCurso."'";
-			$resultado = $this -> driver->query($consulta);
-			$horarios =$resultado->fetch_assoc();
-
-			$fechas[]=$fechaInicio;
-			return $fechas;
-
-			if($resultado ->num_rows==0)
-				return FALSE;
-			else
-			{
-				while($row =$resultado->fetch_assoc())
-					$fechas[]=$row;
-				return $fechas;	
-			}
-
-			
 		}
 	}
 
@@ -697,6 +667,108 @@ class ProfesorMdl
 
 		}
 		
+	}
+
+	function existeHojaActividad($idActividad)
+	{
+		$consulta ="SELECT * FROM hojasextras WHERE id_actividad=$idActividad";
+		$resultado = $this -> driver->query($consulta);
+
+		if($resultado ->num_rows==0)
+				return FALSE;
+		else
+			return TRUE;
+	}
+
+	function descargaCalificaciones($idCurso)
+	{
+		
+		//se obtiene el nombre del curso
+		$consulta ="SELECT nombre FROM cursos WHERE id=$idCurso";
+		$resultado = $this -> driver->query($consulta);
+		$row =$resultado->fetch_assoc();
+		$nombreCurso=$row["nombre"];
+		$idAlumno=null;
+		$respuesta="<body style='margin:0 auto; text-align:center'>
+					<h1>".$nombreCurso."</h1>
+					<table border='1' style='border:1px solid black; text-align:center;width:500px;
+  margin: 10px auto'>
+					";
+
+		$consulta ="SELECT * FROM calificaciones_actividades WHERE id_curso=$idCurso";
+		$resultado = $this -> driver->query($consulta);
+		while ( $actividad =$resultado->fetch_assoc()) {
+			$nombreActividad=$actividad['nombre_actividad'];
+			$calificacion=$actividad['calificacion'];
+			if($idAlumno!=$actividad["id_alumno"])
+			{
+				$idAlumno=$actividad["id_alumno"];
+				$consulta ="SELECT * FROM alumnos WHERE id_alumno=$idAlumno";
+				$resultado2 = $this -> driver->query($consulta);
+				$alumno =$resultado2->fetch_assoc();
+				$codigoAlumno=$alumno['codigo'];
+				$nombreAlumno=$alumno['nombre'];
+			}
+			$respuesta.="<tr style='border:1px solid black'>
+			<th style='border:1px solid black'>".$codigoAlumno."</th>
+			<th style='border:1px solid black'>".$nombreAlumno."</th>
+			<th style='border:1px solid black'>".$nombreActividad."</th>
+			<th style='border:1px solid black'>".$calificacion."</th>
+			</tr>";
+			
+		}
+		$respuesta.="</table></body>";
+		return $respuesta;
+
+	}
+
+	function descargaAsistencias($idCurso)
+	{
+		
+		//se obtiene el nombre del curso
+		$consulta ="SELECT nombre FROM cursos WHERE id=$idCurso";
+		$resultado = $this -> driver->query($consulta);
+		$row =$resultado->fetch_assoc();
+		$nombreCurso=$row["nombre"];
+
+		$idAlumno=null;
+		$respuesta="<body style='margin:0 auto; text-align:center'>
+					<h1>".$nombreCurso."</h1>
+					<table border='1' style='border:1px solid black; font-size:9px; text-align:center;width:100%;
+  margin: 10px auto'>
+					";
+		$fechasTotales=$this->obtenerFechas($idCurso);
+		$respuesta.="<tr><td>Alumno</td>";
+		foreach ($fechasTotales as  $fecha) {
+			$respuesta.="<td>".$fecha."</td>";
+		}
+		
+
+		//nombre de alumno
+		$consulta ="SELECT * FROM asistencias WHERE id_curso=$idCurso";
+		$resultado = $this -> driver->query($consulta);
+		
+		while ( $row =$resultado->fetch_assoc()) {
+			if($idAlumno !=$row['id_alumno'])
+			{
+				$respuesta.= "</tr>";
+				$idAlumno=$row['id_alumno'];
+				$consulta ="SELECT nombre FROM alumnos WHERE id_alumno=$idAlumno";
+				$resultado2 = $this -> driver->query($consulta);
+				$row2 =$resultado2->fetch_assoc();
+				$nombreAlumno=$row2['nombre'];
+				$respuesta.= "<tr><td>".$nombreAlumno."</td>";
+			}
+			if($row['asistencia']==1)
+				$respuesta.= "<td>*</td>";
+			else
+				$respuesta.= "<td>N/A</td>";
+		}
+		$respuesta.= "</tr>";
+		
+		$respuesta.="</table></body>";
+		return $respuesta;
+
 	}
 }
 

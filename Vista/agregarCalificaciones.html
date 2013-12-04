@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./www/css/bootstrap-responsive.css">
 	<link rel="stylesheet" type="text/css" href="./www/css/redmond/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="./www/css/apprise.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -35,11 +36,14 @@
 							<th >NombreCurso</th>
 							<th >Academia</th>
 							<th >NRC</th>
+							<th> <button class="btn btn-min puntero" type="submit" onclick="[DESCARGA]">
+								<i class="icon-download-alt" title="descargar lista"></i>
+							</button></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td onClick="desplegar(numero)" colspan="4">
+							<td onClick="desplegar(numero)" colspan="6">
 								<p id="mostrar_ocultar" class="puntero">Mostrar Alumnos</p>
 							</td>
 						</tr>
@@ -56,7 +60,7 @@
 								<td >
 									<button class="btn btn-mini agregarCalificaciones" type="submit" id="idCURSO">Agregar Calificaciones</button>
 								</td>
-								<td >
+								<td colspan="3">
 									<button class="btn btn-info btn-mini mostrarCalificaciones"  id="idCOD" type="submit">Ver calificaciones</button>
 								</td>
 							</tr >
@@ -87,5 +91,7 @@
 	<script type="text/javascript" src="./www/js/desplegarAlumnos.js"></script>
 	<script type="text/javascript" src="./www/js/validaFormProfesor-calificaciones.js"></script>
 	<script type="text/javascript" src="./www/js/cargaMenuProfesor.js"></script>
+	<script type="text/javascript" src="./www/js/apprise.js"></script>
+	<script type="text/javascript" src="./www/js/descargaCalificaciones.js"></script>
 </body>
 </html>

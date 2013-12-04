@@ -18,7 +18,7 @@ jQuery(document).ready(function($){
 	  	if(error==false)
 	  		$( "#formulario-calificaciones" ).submit();
 	  	else
-	  		alert("se muestra el error");
+	  		apprise('Valores incorrectos');
 	  }
 	});
 
