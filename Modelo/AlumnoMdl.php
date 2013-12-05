@@ -297,6 +297,31 @@ class AlumnoMdl
 		}
 	}
 
+	function mostrarHojaExtra($idActividad,$idAlumno)
+	{
+		$retorno="";
+		$contador=0;
+		$consulta ="SELECT * FROM calificaciones_hojas WHERE id_actividad='".$idActividad."'";
+		$resultado = $this -> driver->query($consulta);
+
+		if($resultado->num_rows==0)
+			return FALSE;
+			
+			while($hojas =$resultado->fetch_assoc())
+			{
+				//se obtiene el nombre del rublo
+				$consulta ="SELECT nombre FROM hojasextras WHERE id='".$hojas['id_hoja']."'";
+				$resultado2 = $this -> driver->query($consulta);
+				$nombreHoja =$resultado2->fetch_assoc();
+				$retorno.="<label for='".$contador."'>".$nombreHoja['nombre']."</label><br>";
+				//se agrega la calificacion
+				$retorno.="<input type='text' value='".$hojas['calificacion']."' disabled='true' id='".$contador."'></br>";
+				$contador++;
+			}
+
+			return $retorno;
+	}
+
 
 }
 

@@ -770,6 +770,49 @@ class ProfesorMdl
 		return $respuesta;
 
 	}
+
+	function desabilitarAlumnos($idCurso)
+	{
+		$consulta ="SELECT * FROM alumnos_cursos WHERE id_curso=$idCurso";
+		$resultado = $this -> driver->query($consulta);
+
+		if($resultado === FALSE)
+				return FALSE;
+		//se procesa el resultado
+		else
+		{
+			while($row =$resultado->fetch_assoc())
+				$alumnos[]=$row;
+			if(!isset($alumnos))
+				return FALSE;
+			else
+			 return $alumnos;
+		}
+	}
+
+	function obtenerAcademias()
+	{
+		$query = 'SELECT * FROM materias_academias';
+
+		$r = $this -> driver -> query($query);
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;	
+	}
+
+	function obtenerMaterias($idAcademia)
+	{
+		$query = 'SELECT * FROM materias_academias WHERE academia_id='.$idAcademia;
+
+		$r = $this -> driver -> query($query);
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;	
+	}
 }
 
 ?>

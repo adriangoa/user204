@@ -24,7 +24,7 @@
 		<div class="contenedor">
 			<div id="cuadro_formulario">
 				<form action="index.php?ctl=Profesor&act=altaAlumnos" method="post" id="formulario">
-					<div id="campos_entrada" class="table-responsive">
+					<div id="campos_entrada">
 						<table class="bordered">
 							<caption>Alumnos Existentes</caption>
 							<thead>
@@ -52,7 +52,7 @@
 										NOMBRE
 									</td>
 									<td colspan="2">
-										<input type="checkbox" name="seleccionados[]" value="IDALUMNO">
+										<input type="checkbox" name="seleccionados[]" value="IDALUMNO" class="checkbox">
 									</td>
 								</tr>
 							</tbody id="fin">
@@ -90,5 +90,6 @@
 	<script type="text/javascript" src="./www/js/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="./www/js/validaAltaAlumno.js"></script>
 	<script type="text/javascript" src="./www/js/cargaMenuProfesor.js"></script>
+	<script type="text/javascript" src="./www/js/desabilitaAlumnos.js"></script>
 </body>
 </html>

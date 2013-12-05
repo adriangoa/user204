@@ -1223,6 +1223,39 @@ class ProfesorCtl
 
 			break;
 
+			case "desabilitarAlumnos":
+					$idCurso=$_GET["idCurso"];
+					$resultado = $this -> modelo -> desabilitarAlumnos($idCurso);
+					if($resultado!=FALSE)
+					{
+						
+						echo json_encode($resultado);
+						
+					}
+					else
+					{
+						echo "1";
+					}
+
+			break;
+
+			case "regresarAcademias":
+			$academias = $this -> modelo -> obtenerAcademias();
+				if($academias!=FALSE)
+					{
+						echo json_encode($academias);
+					}
+			break;
+
+			case "regresarMaterias":
+			$idAcademia = $_GET['idAcademia'];
+			$materias = $this -> modelo -> obtenerMaterias($idAcademia);
+				if($materias!=FALSE)
+					{
+						echo json_encode($materias);
+					}
+			break;
+
 
 
 			default:

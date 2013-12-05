@@ -6166,7 +6166,7 @@ a.badge:focus {
   position: fixed;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1800px) {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;

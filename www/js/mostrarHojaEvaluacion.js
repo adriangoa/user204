@@ -3,39 +3,31 @@ jQuery(document).ready(function($){
 	$(".mostrarHoja").click(function (e){
 		$( DIALOG ).html("");
 		//se obtiene con ajax
-		//creamos el objeto Ajax
-		var miajax=nuevoAjax();
-		//hago la peticion a mi server
-		miajax.open('get','index.php?ctl=Profesor&act=mostrarHojaExtra&idActividad='+$(this).attr("id"),true);
-
-		//funcion para cuando ccambie el estatus
-		miajax.onreadystatechange=function()
-		{
-
-			if(miajax.readyState==4)
-			{
-
-				
-				var json = eval(miajax.responseText);
-				for( i in json){
-					$( DIALOG ).append('<label for"'+(parseInt(i)+1)+'"> '+json[i].nombre+'</label><input type="text" value="'+json[i].porcentaje+'" disabled="true">');
-					
+		$.ajax({ 
+		    url: 'index.php?ctl=Alumno&act=mostrarHojaExtra&idActividad='+$(this).attr("id"),
+		    error: function(data) {
+		               		 },
+		     //data: {action: 'crearArchivo', salida: output},
+		     success: function(salida) {
+			        if(salida == "1")
+					{
+						$( DIALOG ).append("No se han asignado Calificaciones");
+					}
+					else
+					{
+						$( DIALOG ).append(salida);//la salida ya viene formateada
+					}	
+						$( DIALOG ).dialog({
+					      modal: true,
+					      title: "Calificaciones",
+					      buttons: {
+					        Cerrar: function() {
+					          $( this ).dialog( "close" );
+					        }
+					      }
+					    });
 				}
-
-				$( DIALOG ).dialog({
-			      modal: true,
-			      title: "Rublos de evaluacion",
-			      buttons: {
-			        Cerrar: function() {
-			          $( this ).dialog( "close" );
-			        }
-			      }
-			    });
-				
-			}
-		}
-
-		miajax.send(null);
+		 });
 		return false;
 	});	
 

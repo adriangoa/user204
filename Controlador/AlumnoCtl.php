@@ -234,7 +234,7 @@ class AlumnoCtl
 							{
 								$new_fila = str_replace("colspan1", count($actividades)/3, $new_fila);//para saber que validar
 								$new_fila = str_replace("colspan2", count($actividades)/3, $new_fila);//para saber que validar
-								$new_fila = str_replace("colspan3", (count($actividades)/3)+1, $new_fila);//para saber que validar
+								$new_fila = str_replace("colspan3", ceil((count($actividades)/3)+1), $new_fila);//para saber que validar
 								$new_fila = str_replace("[colspanBoton]", count($actividades)+1, $new_fila);//para saber que validar
 							}
 							if($actividades===FALSE)
@@ -369,6 +369,21 @@ class AlumnoCtl
 
 				echo $menu;
 			break;
+
+		 	 case "mostrarHojaExtra":
+		 	 	$idActividad=$_GET["idActividad"];
+		 		 $resultado = $this -> modelo -> mostrarHojaExtra($idActividad,$_SESSION["id"]);
+					if($resultado==FALSE)
+					{
+						echo "1";
+						///require_once("Vista/agregarAlumno.html");
+						
+					}
+					else
+					{
+						echo $resultado;
+					}
+		 	 break;
 
 			default:
 			 	require_once("Vista/InicioAlumno.html");
